@@ -9,7 +9,7 @@ export default function AuthenticationRoot() {
   return (
     <Layout page="authentication">
       <Head>
-        <title>Beach Pass</title>
+        <title>Pocket Forest</title>
       </Head>
       <Authentication loginWithGoogle={loginWithGoogle} signInWithEmailAndPassword={signInWithEmailAndPassword} />
     </Layout>

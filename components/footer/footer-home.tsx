@@ -1,25 +1,22 @@
 const footerNavigation = {
   solutions: [
-    { name: 'Hosting', href: '#' },
-    { name: 'Data Services', href: '#' },
-    { name: 'Uptime Monitoring', href: '#' },
-    { name: 'Enterprise Services', href: '#' },
+    { name: 'Pocket Forest', href: '#' },
+    { name: 'Taylor Made Project', href: '#' },
+    { name: 'Plant a Tree', href: '#' },
+    { name: 'Tree Data Cloud', href: '#' },
   ],
   support: [
     { name: 'Pricing', href: '#' },
     { name: 'Documentation', href: '#' },
     { name: 'Guides', href: '#' },
-    { name: 'API Reference', href: '#' },
   ],
   company: [
     { name: 'About', href: '#' },
-    { name: 'Blog', href: '#' },
     { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
     { name: 'Partners', href: '#' },
   ],
   legal: [
-    { name: 'Claim', href: '#' },
     { name: 'Privacy', href: '#' },
     { name: 'Terms', href: '#' },
   ],
@@ -37,8 +34,8 @@ export default function FooterHome() {
         </h2>
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <img
-            className="h-7"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            className="h-24"
+            src="/images/logos/logo.svg"
             alt="Company name"
           />
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">

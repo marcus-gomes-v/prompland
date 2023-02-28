@@ -1,11 +1,10 @@
 const faqs = [
   {
     id: 1,
-    question: "What's the best thing about Switzerland?",
+    question: "Do you guys create project outside of Gdanski?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "Yes, we are able to create project in any other city inside poland, we also are starting to build project outside for our neighbor countries.",
   },
-  // More questions...
 ]
 
 

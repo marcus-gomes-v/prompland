@@ -25,12 +25,12 @@ export default function Dashboard({ user }: { user: any }) {
                   <div className="sm:flex sm:items-center sm:justify-between">
 
                     <div className="sm:flex-auto">
-                      <h1 className="text-xl font-semibold text-gray-900">Financeiro</h1>
+                      <h1 className="text-xl font-semibold text-gray-900">Finance</h1>
                       <p className="mt-2 text-sm text-gray-700">
-                        {user.type === 'teacher' ?
-                          <>Aqui você pode acessar o histórico de pagamentos recebidos e efetuados.</>
+                        {user.type === 'admin' ?
+                          <>Here you can check the payment of the companies did and the investment they accept to pay.</>
                           :
-                          <>Aqui você pode acessar o seu histórico de pagamento</>
+                          <>Here you can access the history of your investments and payments.</>
                         }
                       </p>
                     </div>

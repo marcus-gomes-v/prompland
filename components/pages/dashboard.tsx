@@ -99,7 +99,7 @@ export default function Dashboard({ user }: { user: iUser }) {
                         <Image height={96} width={96} className="mx-auto h-20 w-20 rounded-full" src={user.imageUrl} alt="" />
                       </div>
                       <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
-                        <p className="text-sm font-medium text-gray-600">Bem vindo,</p>
+                        <p className="text-sm font-medium text-gray-600">Welcome,</p>
                         <p className="text-xl font-bold text-gray-900 sm:text-2xl">{user.name}</p>
                         <p className="text-sm font-medium text-gray-600">{user.email}</p>
                       </div>

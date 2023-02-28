@@ -1,49 +1,48 @@
 import {
   ArrowPathIcon,
+  BuildingLibraryIcon,
   CloudArrowUpIcon,
   FingerPrintIcon,
-  LockClosedIcon,
 } from '@heroicons/react/24/outline'
 
 
 const features = [
   {
-    name: 'Push to deploy',
+    name: 'IOT',
     description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+      'We use IOT to check send data to our servers daily, so we can track all the trees in real time, creating the first smart-forest.',
     icon: CloudArrowUpIcon,
   },
   {
-    name: 'SSL certificates',
+    name: 'City Integration',
     description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
-    icon: LockClosedIcon,
+      'We have integration with cities, so we can provide a perfect fit between your pocket forest and the city maintence.',
+    icon: BuildingLibraryIcon,
   },
   {
-    name: 'Simple queues',
+    name: 'Sutainable',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+      'We build pocket forest that dosent need much maintence and care, we focus to create sustainable environments, we project to growth.',
     icon: ArrowPathIcon,
   },
   {
-    name: 'Advanced security',
+    name: 'Personalized Project',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
+      'We also work with personalized projects, creating an entire environment for your company space, we can make your company more green.',
     icon: FingerPrintIcon,
   },
 ]
 
 export default function Features() {
   return (
-    <div id='features' className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
+    <div id='features' className="mx-auto max-w-7xl px-6 sm:mt-16 lg:py-3">
       <div className="mx-auto max-w-2xl lg:text-center">
-        <h2 className="text-base font-semibold leading-7 text-teal-600">Deploy faster</h2>
+        <h2 className="text-base font-semibold leading-7 text-teal-600">Features</h2>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Everything you need to deploy your app
+          We know how to build your pocket <span className='text-teal-500'>forest.</span>
         </p>
         <p className="mt-6 text-lg leading-8 text-gray-600">
-          Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-          pulvinar et feugiat blandit at. In mi viverra elit nunc.
+          We have experience into reforestation field, we can create unique project using our specialists skills.
         </p>
       </div>
       <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">

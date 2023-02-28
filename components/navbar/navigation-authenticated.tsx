@@ -14,15 +14,14 @@ function classNames(...classes: any) {
 export default function Navigation({ page, menu, user }: {page: string, menu: any, user: any}) {
 
 
-  const navigation = user.type === 'teacher' ? [
+  const navigation = user.type === 'admin' ? [
     { name: 'Home', href: '/dashboard', current: page === 'dashboard'  },
-    { name: 'Financeiro', href: '/financial', current: page === 'financial' },
+    { name: 'Financial', href: '/financial', current: page === 'financial' },
     // { name: 'Alunos', href: '/clients', current: page === 'clients' },
-    { name: 'Turmas', href: '/teams', current: page === 'teams' },
+    { name: 'Projects', href: '/projects', current: page === 'projects' },
   ] : 
   [
     { name: 'Home', href: '/dashboard', current: page === 'dashboard' },
-    { name: 'Financeiro', href: '/financial', current: page === 'financial' },
   ]
 
   const userNavigation = [
@@ -33,23 +32,24 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
 
 
   return (
-    <Popover as="header" className="bg-gradient-to-r from-indigo-800 to-purple-600 pb-24">
+    <Popover as="header" className="bg-gradient-to-r from-teal-900 to-teal-600 pb-24">
       {({ open }: { open: boolean }) => (
         <>
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div className="relative flex flex-wrap items-center justify-center lg:justify-between">
               {/* Logo */}
               <div className="absolute left-0 flex-shrink-0 py-5 lg:static">
-                <a href="#">
+                <a href="#" className='flex align-middle gap-2'>
                   <span className="sr-only">Your Company</span>
                     <div className='w-8 h-8 md:w-12 md:h-12 relative'>
                       <Image
                         layout='fill'
                         className="w-auto"
-                        src="/images/logos/logo-cyan.svg"
+                        src="/images/logos/logo.svg"
                         alt="Your Company"
                       />
                     </div>
+                    <span className='inline text-2xl mh-auto font-thin my-auto text-white'>Pocket <b className='text-teal-600 font-bold'>Forest</b></span>
                 </a>
               </div>
 
@@ -103,7 +103,7 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current ? 'text-cyan-300 bg-opacity-10' : 'text-cyan-100',
+                            item.current ? 'text-teal-300 bg-opacity-10' : 'text-teal-100',
                             'text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-20'
                           )}
                           aria-current={item.current ? 'page' : undefined}
@@ -119,7 +119,7 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
               {/* Menu button */}
               <div className="absolute right-0 flex-shrink-0 lg:hidden">
                 {/* Mobile menu button */}
-                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-cyan-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-teal-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -165,12 +165,12 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
                           <Image
                             layout='fill'
                             className="h-8 w-auto"
-                            src="/images/logos/logo-cyan.svg"
+                            src="/images/logos/logo-teal.svg"
                             alt="Your Company"
                           />
                         </div>
                         <div className="-mr-2">
-                          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
+                          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
                             <span className="sr-only">Close menu</span>
                             <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                           </Popover.Button>

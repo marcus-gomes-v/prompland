@@ -1,7 +1,8 @@
+import { HomeIcon } from "@heroicons/react/24/outline";
 
 export default function Testimonials() {
   return (
-    <div className="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl sm:mt-16">
       <div className="relative overflow-hidden bg-gray-900 py-20 px-6 shadow-xl sm:rounded-3xl sm:py-24 sm:px-10 md:px-12 lg:px-20">
         <img
           className="absolute inset-0 h-full w-full object-cover brightness-150 saturate-0"
@@ -28,8 +29,8 @@ export default function Testimonials() {
               y2="363.075"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#776FFF" />
-              <stop offset={1} stopColor="#FF4694" />
+              <stop stopColor="#1abc9c" />
+              <stop offset={1} stopColor="#16a085" />
             </linearGradient>
           </defs>
         </svg>
@@ -45,13 +46,15 @@ export default function Testimonials() {
           />
         </svg>
         <div className="relative mx-auto max-w-2xl lg:mx-0">
-          <img className="h-12 w-auto" src="https://tailwindui.com/img/logos/workcation-logo-white.svg" alt="" />
+          {/* <img className="h-12 w-auto" src="https://tailwindui.com/img/logos/workcation-logo-white.svg" alt="" /> */}
+          <div className="text-white align-middle flex gap-3">
+            <HomeIcon className="h-8 w-auto inline" />
+            <span className="text-xl my-auto">Homeoffice</span>
+          </div>
           <figure>
             <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
               <p>
-                “Amet amet eget scelerisque tellus sit neque faucibus non eleifend. Integer eu praesent at a. Ornare
-                arcu gravida natoque erat et cursus tortor consequat at. Vulputate gravida sociis enim nullam
-                ultricies habitant malesuada lorem ac.”
+                “After pandemics the need for trees and green areas became really important for our mental and body health, cause we stay much more in home and basically all the jobs became homeoffice, having green areas near by home is very important.”
               </p>
             </blockquote>
             <figcaption className="mt-6 text-base text-white">

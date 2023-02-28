@@ -10,7 +10,7 @@ const formatAuthUser = (user: any) => ({
   name: user.displayName || '',
   imageUrl: user.photoURL || '/images/avatar/placeholder.svg',
   code: '',
-  type: 'student',
+  type: 'company',
   teams: []
 });
 

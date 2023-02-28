@@ -7,7 +7,7 @@ import Faq from '../components/pages/home/faq'
 import Features from '../components/pages/home/features'
 import Hero from '../components/pages/home/hero'
 import LogoCloud from '../components/pages/home/logo-cloud'
-import Pricing from '../components/pages/home/pricing'
+import Product from '../components/pages/home/product';
 import Testimonials from '../components/pages/home/testimonials'
 
 export default function Home() {
@@ -25,20 +25,20 @@ export default function Home() {
         {/* Logo cloud */}
         <LogoCloud />
 
-        {/* Feature section */}
-        <Features />
-
         {/* Testimonial section */}
         <Testimonials />
 
-        {/* Pricing section */}
-        <Pricing />
+        {/* Product section */}
+        <Product />
+
+        {/* Feature section */}
+        <Features />
 
         {/* FAQs */}
         <Faq />
 
         {/* CTA section */}
-        <Cta />
+        {/* <Cta /> */}
       </main>
 
       {/* Footer */}
