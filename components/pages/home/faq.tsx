@@ -10,7 +10,7 @@ const faqs = [
 
 export default function Faq() {
   return (
-    <div className="mx-auto max-w-2xl divide-y divide-gray-900/10 px-6 pb-8 sm:pt-12 sm:pb-24 lg:max-w-7xl lg:px-8 lg:pb-32">
+    <div className="mx-auto max-w-2xl divide-y divide-gray-900/10  mt-24 px-6 pb-8 sm:pt-12 sm:pb-24 lg:max-w-7xl lg:px-8 lg:pb-32">
       <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
       <dl className="mt-10 space-y-8 divide-y divide-gray-900/10">
         {faqs.map((faq) => (

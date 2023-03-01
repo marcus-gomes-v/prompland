@@ -18,7 +18,7 @@ export default function Home() {
       {/* Header */}
       <NavigationHome />
 
-      <main className="isolate">
+      <main id="home" className="isolate">
         {/* Hero section */}
         <Hero />
         {/* Logo cloud */}
