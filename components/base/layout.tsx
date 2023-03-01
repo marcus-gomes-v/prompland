@@ -1,6 +1,6 @@
 import Head from "next/head"
 export default function Layout({ children, page }: { children: React.ReactNode, page: string }) {
-  const siteTitle = "Beach Association"
+  const siteTitle = "Pocket Forest"
 
   return (
    <div className="bg-gray-50">
@@ -8,7 +8,7 @@ export default function Layout({ children, page }: { children: React.ReactNode, 
         <link rel="icon" href="/images/logos/logo.svg" type={`image/svg`}></link>
         <meta
           name="description"
-          content="The best platform to have classes and controll your students"
+          content="We provide pocket project to create green environments into cities."
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
