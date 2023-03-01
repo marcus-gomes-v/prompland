@@ -5,7 +5,6 @@ import Layout from '../components/base/layout';
 import Navigation from '../components/navbar/navigation-authenticated';
 import Footer from '../components/footer/footer-authenticated';
 import Head from 'next/head';
-import Teams from '../components/pages/teams';
 import Projects from '../components/pages/projects';
 
 const LoggedIn = () => {
