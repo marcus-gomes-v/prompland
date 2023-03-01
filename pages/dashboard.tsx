@@ -20,7 +20,7 @@ const LoggedIn = () => {
   return (
     <Layout page="dashboard">
       <Head>
-        <title>Beach Pass - Dashboard</title>
+        <title>Pocket Forest - Dashboard</title>
       </Head>
         {
           loading ?

@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Layout from '../components/base/layout';
 import FooterHome from '../components/footer/footer-home'
 import NavigationHome from '../components/navbar/navigation-home'
-import Cta from '../components/pages/home/cta'
 import Faq from '../components/pages/home/faq'
 import Features from '../components/pages/home/features'
 import Hero from '../components/pages/home/hero'

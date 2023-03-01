@@ -21,7 +21,7 @@ const LoggedIn = () => {
   return (
     <Layout page="teams">
       <Head>
-        <title>Beach Pass - Alunos</title>
+        <title>Pocket Forest - Alunos</title>
       </Head>
         {
           loading ?
