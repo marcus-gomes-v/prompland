@@ -8,8 +8,9 @@ import SelectInput from '../inputs/select-input'
 import HourInput from '../inputs/hour-input'
 import AlertInfo from '../alerts/info'
 import TextInput from '../inputs/text-input'
+import Swal from 'sweetalert2'
 
-export default function NewTeamModal({ opened, setOpened }: { opened: boolean, setOpened: any }) {
+export default function NewModal({ opened, setOpened }: { opened: boolean, setOpened: any }) {
   const [open, setOpen] = useState(opened)
 
   useEffect(() => {
@@ -18,70 +19,32 @@ export default function NewTeamModal({ opened, setOpened }: { opened: boolean, s
 
   const cancelButtonRef = useRef(null)
 
-
-  const selectFreqTitle = 'Frequência'
-
-  const selectFreqData = [
-    { title: "Semanal", key: "semanal" },
-    { title: "Mensal", key: "mensal" },
-    { title: "Quinzenal", key: "quinzenal" },
-  ]
-
-  const selectDateTitle = 'Dias'
-
-  const selectDateData = [
-    { title: "Segundas", key: "seg" },
-    { title: "Terças", key: "terc" },
-    { title: "Quartas", key: "quart" },
-    { title: "Quintas", key: "quint" },
-    { title: "Sextas", key: "sext" },
-    { title: "Sabados", key: "sbd" },
-    { title: "Segundas & Quartas", key: "segequart" },
-    { title: "Terças & Quintas", key: "tercequint" },
-  ]
-
-  const selectPgtTitle = 'Data de Pagamento'
-
-  const selectPgtData = [
-    { title: "Dia 5", key: "5" },
-    { title: "Dia 10", key: "10" },
-    { title: "Dia 15", key: "15" },
-  ]
-
-  const timeInputTitle = 'Hora'
-  const textTeamName = 'Nome para Turma'
-
-  const [teamName, setTeamName] = useState('')
-  const [teamDate, setTeamDate] = useState(null)
-  const [paymentDate, setPaymentDate] = useState(null)
-  const [frequency, setFrequency] = useState(null)
+  const textName = 'Project Name'
+  const textPlaceholder = 'Pocket 100 Trees'
+  const [name, setName] = useState('')
   const [price, setPrice] = useState(null)
-  const [time, setTime] = useState(null)
 
 
   const handleFields = () => {
     const data = {
-      "teamDate": teamDate,
-      "paymentDate": paymentDate,
-      "frequency": frequency,
       "price": price,
-      "time": time,
     }
-    sendData(data, teamName)
+    sendData(data, name)
   }
 
   const sendData = async (data: any, name: string) => {
     try {
         firebase
           .firestore()
-          .collection('teams')
+          .collection('projects')
           .add({
-            team_name: name,
-            team_teacher: firebase.auth().currentUser?.uid, 
-            team_data: data,
-            team_members: [],
+            name: name,
+            owner: firebase.auth().currentUser?.uid, 
+            data: data,
+            members: [],
           })
         setOpened(false)
+        Swal.fire('Success','Project created with success', 'success')
     } catch (error) {
       console.log(error)
     }
@@ -116,24 +79,17 @@ export default function NewTeamModal({ opened, setOpened }: { opened: boolean, s
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-purple-100">
-                    <UserGroupIcon className="h-6 w-6 text-purple-600" aria-hidden="true" />
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-teal-100">
+                    <UserGroupIcon className="h-6 w-6 text-teal-600" aria-hidden="true" />
                   </div>
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                      Nova Turma
+                      New Project
                     </Dialog.Title>
                     <div className="mt-2">
-                      <AlertInfo text='O valor da turma é cobrado mensalmente.' />
                       <div className='grid grid-cols-1 lg:gap-2 lg:grid-cols-2'>
-                        <TextInput title={textTeamName} handle={setTeamName} placeholder="Iniciantes BT" />
-                        <SelectInput title={selectDateTitle} data={selectDateData} handle={setTeamDate} />
-                        <div className="grid grid-cols-2 gap-2">
-                          <SelectInput title={selectFreqTitle} data={selectFreqData} handle={setFrequency} />
-                          <HourInput title={timeInputTitle} handle={setTime} />
-                        </div>
+                        <TextInput title={textName} handle={setName} placeholder={textPlaceholder} />
                         <PriceInput handle={setPrice} />
-                        <SelectInput title={selectPgtTitle} data={selectPgtData} handle={setPaymentDate} />
                       </div>
                       
                     </div>
@@ -142,18 +98,18 @@ export default function NewTeamModal({ opened, setOpened }: { opened: boolean, s
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
                     onClick={handleFields}
                   >
-                    Criar
+                    Create
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
+                    className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm"
                     onClick={() => setOpened(false)}
                     ref={cancelButtonRef}
                   >
-                    Cancelar
+                    Cancel
                   </button>
                 </div>
               </Dialog.Panel>

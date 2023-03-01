@@ -9,11 +9,11 @@ export default function PriceInput({ handle }: {handle: any}) {
   return (
     <div>
       <label htmlFor="price" className="flex text-sm text-left font-medium text-gray-700">
-        Valor
+        Value
       </label>
       <div className="relative mt-1 rounded-md shadow-sm">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <span className="text-gray-500 sm:text-sm">R$</span>
+          <span className="text-gray-500 sm:text-sm">zł</span>
         </div>
         <input
           type="tel"
@@ -24,11 +24,6 @@ export default function PriceInput({ handle }: {handle: any}) {
           aria-describedby="price-currency"
           onChange={e => setData(e.target.value)}
         />
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-          <span className="text-gray-500 sm:text-sm" id="price-currency">
-            Mensal
-          </span>
-        </div>
       </div>
     </div>
   )

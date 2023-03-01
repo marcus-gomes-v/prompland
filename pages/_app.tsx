@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 
+
 import { AuthUserProvider } from '../context/AuthUserContext';
 
 function app({ Component, pageProps }: any) {

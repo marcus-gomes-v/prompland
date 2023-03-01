@@ -51,7 +51,7 @@ function classNames(...classes: any) {
 
 export default function Product() {
   return (
-    <div id="product" className="mx-auto max-w-7xl px-6 sm:mt-16 lg:py-3">
+    <div id="product" className="mx-auto max-w-7xl pt-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-base font-semibold leading-7 text-teal-600">Products</h2>

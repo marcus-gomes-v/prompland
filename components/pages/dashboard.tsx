@@ -1,14 +1,10 @@
-import firebase from 'firebase'
-import 'firebase/firestore'
 import Image from "next/image";
-
 import {
   BanknotesIcon,
   UsersIcon,
 } from '@heroicons/react/24/outline'
-import { useEffect, useState } from 'react';
 import Table from '../tables/dashboard';
-import { iTeam, iUser } from '../../typings';
+import { iUser } from '../../typings';
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
@@ -35,47 +31,6 @@ export default function Dashboard({ user }: { user: iUser }) {
     },
   ] : []
  
-  const selectDateData = [
-    { title: "Segundas", key: "seg" },
-    { title: "Terças", key: "terc" },
-    { title: "Quartas", key: "quart" },
-    { title: "Quintas", key: "quint" },
-    { title: "Sextas", key: "sext" },
-    { title: "Sabados", key: "sbd" },
-    { title: "Segundas & Quartas", key: "segequart" },
-    { title: "Terças & Quintas", key: "tercequint" },
-  ]
-  
-  const [studentTeams, setStudentTeams] = useState<iTeam[]>([]);
-
-  useEffect(() => {
-    if (user.teams && user.teams.length > 0){
-      firebase
-      .firestore()
-      .collection('teams')
-      .where(firebase.firestore.FieldPath.documentId(), 'in', user.teams)
-      .onSnapshot((querySnapshot) => {
-        let teams: iTeam[] = []
-        querySnapshot.forEach((doc) => {
-          const oTeam: iTeam = { // define the object (singular)
-            id: doc.id,
-            team_teacher: doc.data()?.team_teacher,
-            team_name: doc.data()?.team_name,
-            team_data: {
-              frequency: doc.data()?.team_data.frequency,
-              paymentDate: doc.data()?.team_data.paymentDate,
-              price: doc.data()?.team_data.price,
-              teamDate: selectDateData.filter(e => e.key == doc.data()?.team_data.teamDate)[0].title ,
-              time: doc.data()?.team_data.time,
-            }
-          } as iTeam;
-          teams.push(oTeam)
-        })
-        setStudentTeams(teams)
-      })
-    }
-  }, [])
-
 
 
   return (
@@ -104,29 +59,12 @@ export default function Dashboard({ user }: { user: iUser }) {
                         <p className="text-sm font-medium text-gray-600">{user.email}</p>
                       </div>
                     </div>
-                    {/* <div className="mt-5 flex justify-center sm:mt-0">
-                      <a
-                        onClick={sendData}
-                        href="#"
-                        className="flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
-                      >
-                        View profile
-                      </a>
-                    </div> */}
                   </div>
                 </div>
-                {/* <div className="grid grid-cols-1 divide-y divide-gray-200 border-t border-gray-200 bg-gray-50 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="px-6 py-5 text-center text-sm font-medium">
-                      <span className="text-gray-900">{stat.value}</span>{' '}
-                      <span className="text-gray-600">{stat.label}</span>
-                    </div>
-                  ))}
-                </div> */}
               </div>
             </section>
 
-            {user.type == 'student' ? <Table teams={studentTeams} user={user} /> : ''}
+            {user.type == 'company' ? <Table  user={user} /> : ''}
 
             {/* Actions panel */}
             <section aria-labelledby="quick-links-title">

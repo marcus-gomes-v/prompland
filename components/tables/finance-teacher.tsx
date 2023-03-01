@@ -51,7 +51,7 @@ export default function FinanceTeacherTable({user}: {user: iUser}) {
       <table className="min-w-full divide-y divide-gray-300">
         <thead className="bg-gray-50">
           <tr>
-            {user.type === 'teacher' &&
+            {user.type === 'admin' &&
               <th
                 scope="col"
                 className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -63,26 +63,20 @@ export default function FinanceTeacherTable({user}: {user: iUser}) {
               scope="col"
               className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
             >
-              Turma
+              Project
             </th>
             <th
               scope="col"
               className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
             >
-              Mês
-            </th>
-            <th
-              scope="col"
-              className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-            >
-              Valor
+              Value
             </th>
             {user.type === 'teacher' &&
               <th
                 scope="col"
                 className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
               >
-                Taxa
+                Tax
               </th>
 
             }
@@ -106,7 +100,6 @@ export default function FinanceTeacherTable({user}: {user: iUser}) {
                 </td>
               }
               <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{transaction.team.team_name}</td>
-              <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{months[transaction.month]}</td>
               <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
                 <Price value={transaction.data.amount / 100} />
               </td>

@@ -2,9 +2,10 @@ import { PencilIcon, UserPlusIcon, XMarkIcon } from '@heroicons/react/24/outline
 import firebase from 'firebase'
 import 'firebase/firestore'
 import { useEffect, useState } from "react";
+import Swal from 'sweetalert2';
 import AddMemberModal from '../modals/add-member-modal';
-import DetailsTeamModal from '../modals/details-team-modal';
-import NewTeamModal from "../modals/new-team-modal";
+import DetailsModal from '../modals/details-modal';
+import NewModal from "../modals/new-modal";
 import Price from '../utils/Price';
 
 export interface iTeams {
@@ -12,51 +13,24 @@ export interface iTeams {
   frequency: string
   paymentDate: string
   price: string
-  teamDate: string
   time: string
   name: string
 }
 
 export default function Projects({ user }: { user: any }) {
 
-  const [openTeamModal, setOpenTeamModal] = useState(false)
-  const [openMemberModal, setOpenMemberModal] = useState(false)
+  const [openNewModal, setOpenNewModal] = useState(false)
   const [openDetailsModal, setOpenDetailsModal] = useState(false)
-  const [teams, setTeams] = useState([])
-  const [targetTeamId, setTargetTeamId] = useState('')
+  const [projects, setProjects] = useState([])
   const [targetTeam, setTargetTeam] = useState({})
 
-  const handleModalMember = () => {
-    openMemberModal ? setOpenMemberModal(false) : setOpenMemberModal(true)
-  }
 
   const handleModalTeam = () => {
-    openTeamModal ? setOpenTeamModal(false) : setOpenTeamModal(true)
+    openNewModal ? setOpenNewModal(false) : setOpenNewModal(true)
   }
 
   const handleModalDetails = () => {
     openDetailsModal ? setOpenDetailsModal(false) : setOpenDetailsModal(true)
-  }
-
-  const selectFreqData = [
-    { title: "Semanal", key: "semanal" },
-    { title: "Mensal", key: "mensal" },
-    { title: "Quinzenal", key: "quinzenal" },
-  ]
-  const selectDateData = [
-    { title: "Segundas", key: "seg" },
-    { title: "Terças", key: "terc" },
-    { title: "Quartas", key: "quart" },
-    { title: "Quintas", key: "quint" },
-    { title: "Sextas", key: "sext" },
-    { title: "Sabados", key: "sbd" },
-    { title: "Segundas & Quartas", key: "segequart" },
-    { title: "Terças & Quintas", key: "tercequint" },
-  ]
-
-  const addUser = (id: string) => {
-    setTargetTeamId(id)
-    handleModalMember()
   }
 
   const openDetails = (data: any) => {
@@ -65,24 +39,42 @@ export default function Projects({ user }: { user: any }) {
   }
 
   const deleteDocument = (id: string) => {
-    firebase.firestore().collection("teams").doc(id).delete().then(() => {
-    console.log("Document successfully deleted!");
-    }).catch((error) => {
-        console.error("Error removing document: ", error);
-    });
+    Swal.fire({
+      title: 'Do you want to delete the project?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      icon: 'question',
+      confirmButtonColor: '#099387'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        firebase.firestore().collection("projects").doc(id).delete()
+        .then(() => {
+          Swal.fire({
+            title: 'Success',
+            text: 'Project successfully deleted!',
+            confirmButtonText: 'Yes',
+            icon: 'success',
+            confirmButtonColor: '#099387'
+          })
+        })
+        .catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      } 
+    })
   }
   
   useEffect(() => {
     firebase
       .firestore()
-      .collection('teams')
-      .where("team_teacher", "==", firebase.auth().currentUser?.uid)
+      .collection('projects')
+      .where("owner", "==", firebase.auth().currentUser?.uid)
       .onSnapshot(querySnapshot => {
         const teamDocs: any = []
         querySnapshot.forEach((doc) => {
-          teamDocs.push({ ...doc.data()?.team_data, name: doc.data()?.team_name, id: doc.id, members: doc.data()?.team_members })
+          teamDocs.push({ ...doc.data()?.data, name: doc.data()?.name, id: doc.id, members: doc.data()?.team_members })
         });
-        setTeams(teamDocs)
+        setProjects(teamDocs)
       })
   }, [])
 
@@ -90,9 +82,8 @@ export default function Projects({ user }: { user: any }) {
 
   return (
     <main className="-mt-24 pb-8">
-      <NewTeamModal opened={openTeamModal} setOpened={setOpenTeamModal} />
-      <AddMemberModal opened={openMemberModal} setOpened={setOpenMemberModal} teamId={targetTeamId} />
-      <DetailsTeamModal opened={openDetailsModal} setOpened={setOpenDetailsModal} team={targetTeam} />
+      <NewModal opened={openNewModal} setOpened={setOpenNewModal} />
+      <DetailsModal opened={openDetailsModal} setOpened={setOpenDetailsModal} data={targetTeam} />
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 className="sr-only">Projects</h1>
@@ -139,66 +130,37 @@ export default function Projects({ user }: { user: any }) {
                         <thead className="bg-gray-50">
                           <tr>
                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                              Nome
-                            </th>
-                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                              Dias
-                            </th>
-                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                              Hora
+                              Name
                             </th>
                             <th scope="col" className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                              Frequência
-                            </th>
-                            <th scope="col" className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                              Valor
-                            </th>
-                            <th scope="col" className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                              Data de Pagamento
+                              Value
                             </th>
                             <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                              Ações
+                              
                             </th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 bg-white">
-                          {teams ? teams.map((team: iTeams, id) => (
+                          {projects ? projects.map((project: iTeams, id) => (
                             <tr key={id}>
                               <td className="px-3 py-4 text-sm text-gray-500">
-                                <div className="text-gray-900">{team.name}</div>
-                              </td>
-                              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                                <div className="flex items-center">
-                                  <div className="">
-                                    <div className="font-medium text-gray-900">{selectDateData.filter(e => e.key == team.teamDate)[0].title}</div>
-                                  </div>
-                                </div>
-                              </td>
-                              
-                              <td className="px-3 py-4 text-sm text-gray-500">
-                                <div className="text-gray-900">{team.time}</div>
+                                <div className="text-gray-900">{project.name}</div>
                               </td>
                               <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                <div className="text-gray-900">{selectFreqData.filter(e => e.key == team.frequency)[0].title}</div>
+                                <div className="text-gray-900"><Price value={+project.price} /></div> 
                               </td>
-                              <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                <div className="text-gray-900"><Price value={+team.price} /></div> 
-                              </td>
-                              <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">{team.paymentDate} de todo mês.</td>
                               <td className="flex space-x-1 lg:space-x-3 justify-center py-4 pl-3 pr-4 sm:pr-6">
-                                <button onClick={() => addUser(team.id)} className="text-center text-teal-600 hover:text-teal-900 border-teal-600 lg:hover:text-teal-50 lg:hover:bg-teal-600 border rounded-sm p-2 w-9 h-9">
-                                  <UserPlusIcon className='h-4 w-4' />
-                                </button>
-                                <button onClick={() => openDetails(team)} className="text-center text-cyan-600 hover:text-cyan-900 border-cyan-600 lg:hover:text-cyan-50 lg:hover:bg-cyan-600 border rounded-sm p-2 w-9 h-9">
+                                
+                                <button onClick={() => openDetails(project)} className="text-center text-cyan-600 hover:text-cyan-900 border-cyan-600 lg:hover:text-cyan-50 lg:hover:bg-cyan-600 border rounded-sm p-2 w-9 h-9">
                                   <PencilIcon className='h-4 w-4' />
                                 </button>
-                                <button onClick={() => deleteDocument(team.id)} className="text-center text-rose-600 hover:text-rose-900 border-rose-600 lg:hover:text-rose-50 lg:hover:bg-rose-600 border rounded-sm p-2 w-9 h-9" >
+                                <button onClick={() => deleteDocument(project.id)} className="text-center text-rose-600 hover:text-rose-900 border-rose-600 lg:hover:text-rose-50 lg:hover:bg-rose-600 border rounded-sm p-2 w-9 h-9" >
                                   <XMarkIcon className='h-4 w-4' />
                                 </button>
                                 
                               </td>
                             </tr>
-                          )) : <tr><td colSpan={4} className="pl-6 py-3">Não possui turmas cadastradas.</td></tr>}
+                          )) : <tr><td colSpan={4} className="pl-6 py-3">No projects available...</td></tr>}
                         </tbody>
                       </table>
                     </div>
