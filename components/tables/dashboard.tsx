@@ -61,7 +61,7 @@ export default function Table({ user }: { user: iUser }) {
                 <td className="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 sm:pl-0 md:pl-3">
                   {projet.name}
                 </td>
-                <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
                   <Price value={+projet.price} />
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
