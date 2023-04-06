@@ -1,6 +1,6 @@
 import Head from "next/head";
 export default function Layout({ children, page }: { children: React.ReactNode, page: string }) {
-  const siteTitle = "Prompland";
+  const siteTitle = "Prompland: AI Prompt Sharing, Creation & Discovery Platform";
 
   return (
     <div className="bg-gray-50">
