@@ -1,17 +1,26 @@
-import Head from "next/head"
+import Head from "next/head";
 export default function Layout({ children, page }: { children: React.ReactNode, page: string }) {
-  const siteTitle = "Prompland"
+  const siteTitle = "Prompland";
 
   return (
-   <div className="bg-gray-50">
+    <div className="bg-gray-50">
       <Head>
-        <link rel="icon" href="/images/logos/logo.png" type={`image/svg`}></link>
+        <title>{`${page} | ${siteTitle}`}</title>
+        <link rel="icon" href="/images/logos/logo.png" type="image/svg"></link>
         <meta
           name="description"
-          content="We provide pocket project to create green environments into cities."
+          content="Prompland is a community platform for sharing, creating, and discovering AI prompts. Explore and contribute to the world of AI prompts today!"
         />
-        <meta name="og:title" content={siteTitle} />
+        <meta name="keywords" content="AI prompts, Prompland, artificial intelligence, AI, community, platform, share, create, discover, prompts" />
+        <meta name="og:title" content={`${page} | ${siteTitle}`} />
+        <meta name="og:description" content="Prompland is a community platform for sharing, creating, and discovering AI prompts. Explore and contribute to the world of AI prompts today!" />
+        <meta name="og:image" content="/images/logos/logo.png" />
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="https://www.prompland.com" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${page} | ${siteTitle}`} />
+        <meta name="twitter:description" content="Prompland is a community platform for sharing, creating, and discovering AI prompts. Explore and contribute to the world of AI prompts today!" />
+        <meta name="twitter:image" content="/images/logos/logo.png" />
         <link
           href="/images/logos/logo.png"
           rel="icon"
@@ -27,8 +36,9 @@ export default function Layout({ children, page }: { children: React.ReactNode, 
         <link rel="apple-touch-icon" href="/images/logos/logo.png"></link>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#FFFFFF" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <main>{children}</main>
-   </div>
-  )
+    </div>
+  );
 }
