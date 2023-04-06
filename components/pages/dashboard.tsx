@@ -1,9 +1,8 @@
 import Image from "next/image";
 import {
-  BanknotesIcon,
-  UsersIcon,
+  MagnifyingGlassIcon,
+  PencilIcon,
 } from '@heroicons/react/24/outline'
-import Table from '../tables/dashboard';
 import { iUser } from '../../typings';
 
 function classNames(...classes: any) {
@@ -12,22 +11,22 @@ function classNames(...classes: any) {
 
 export default function Dashboard({ user }: { user: iUser }) {
 
-  const actions = user.type === 'teacher' ? [
+  const actions = user.type === 'user' ? [
     {
-      icon: UsersIcon,
-      name: 'Turmas de Treinamento',
-      href: '/teams',
-      description: 'Aqui você pode criar turmas de treinamento para as suas aulas, você podefinir um valor, definir dia de cobrança e cadastrar seus alunos.',
-      iconForeground: 'text-sky-700',
-      iconBackground: 'bg-sky-50',
+      icon: MagnifyingGlassIcon,
+      name: 'Discover Prompts',
+      href: '/discover-prompts',
+      description: 'Explore a wide range of AI prompts shared by the community. Discover new and interesting prompts for various AI applications and use cases.',
+      iconForeground: 'text-turquoise-700',
+      iconBackground: 'bg-vibrant-blue-50',
     },
     {
-      icon: BanknotesIcon,
-      name: 'Financeiro',
-      href: '/financial',
-      description: 'Uma área financeira pensada em gerar facilidade, para que você possa acompanhar seus ganhos e verificar o pagamento de todos os seus alunos.',
-      iconForeground: 'text-yellow-700',
-      iconBackground: 'bg-yellow-50',
+      icon: PencilIcon,
+      name: 'Create Prompts',
+      href: '/create-prompts',
+      description: 'Create your own AI prompts and share them with the community. Contribute to the growing collection of prompts and receive feedback from fellow users.',
+      iconForeground: 'text-turquoise-700',
+      iconBackground: 'bg-vibrant-blue-50',
     },
   ] : []
  
@@ -63,8 +62,6 @@ export default function Dashboard({ user }: { user: iUser }) {
                 </div>
               </div>
             </section>
-
-            {user.type == 'company' ? <Table  user={user} /> : ''}
 
             {/* Actions panel */}
             <section aria-labelledby="quick-links-title">

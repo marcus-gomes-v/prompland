@@ -6,6 +6,7 @@ import Navigation from '../components/navbar/navigation-authenticated';
 import Footer from '../components/footer/footer-authenticated';
 import Head from 'next/head';
 import Projects from '../components/pages/projects';
+import AnimationLogo from '../components/animation/AnimationLogo';
 
 const LoggedIn = () => {
   const { authUser, loading, signOut } = useAuth();
@@ -25,9 +26,9 @@ const LoggedIn = () => {
       </Head>
         {
           loading ?
-            <div>
-              <div>Loading....</div>
-            </div> :
+          <div className='flex justify-center'>
+            <AnimationLogo height={360} width={360} amount={1500} />
+          </div> :
             <>
             <Navigation page={"projects"} menu={{ signOut }} user={authUser} />
               <Projects user={authUser} />

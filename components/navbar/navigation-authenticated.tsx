@@ -44,9 +44,9 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
                   <a href="#" className='flex align-middle gap-2'>
                     <span className="sr-only">Prompland</span>
                     <div className='inline-block'>
-                      <AnimationLogo width={32} height={32} amount={700} />
+                      <AnimationLogo width={32} height={32} amount={700} inversed={true} />
                     </div>
-                    <span className='inline text-2xl mh-auto font-thin my-auto text-white'>Promp<b className='text-vibrant-blue-600 font-bold'>land</b></span>
+                    <span className='inline text-2xl mh-auto font-thin my-auto text-white'>Promp<b className='text-turquoise-500 font-bold'>land</b></span>
                   </a>
                 </div>
 

@@ -2,8 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 
-export default function AnimationLogo({ width, height, amount }: { width: number, height: number, amount: number }) {
+export default function AnimationLogo({ width, height, amount, inversed }: { width: number, height: number, amount: number, inversed?: boolean }) {
   const canvasRef = useRef<HTMLDivElement>(null);
+
+  if (!inversed) inversed = false;
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -22,7 +24,13 @@ export default function AnimationLogo({ width, height, amount }: { width: number
 
     const scene = new THREE.Scene();
 
-    const parameters = [
+    const parameters = inversed ? [
+      [0.1, 0x21D4FD, 0.1],
+      [0.1, 0x6AEDFF, 0.1],
+      [0.2, 0xAAF3FF, 0.1],
+      [0.2, 0xCAEEFF, 0.1],
+      [0.3, 0xEAF9FF, 0.1],
+    ] : [
       [0.1, 0x0051FF, 0.1],
       [0.1, 0x0046E6, 0.1],
       [0.2, 0x0039BF, 0.1],

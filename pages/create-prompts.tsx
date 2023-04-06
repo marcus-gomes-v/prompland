@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthUserContext';
 import Layout from '../components/base/layout';
+import Dashboard from '../components/pages/dashboard';
 import Navigation from '../components/navbar/navigation-authenticated';
 import Footer from '../components/footer/footer-authenticated';
-import Finance from '../components/pages/finance';
 import Head from 'next/head';
 import AnimationLogo from '../components/animation/AnimationLogo';
 
@@ -19,18 +19,18 @@ const LoggedIn = () => {
   }, [authUser, loading, router])
 
   return (
-    <Layout page="financial">
-        <Head>
-          <title>Prompland - Financeiro</title>
-        </Head>
+    <Layout page="dashboard">
+      <Head>
+        <title>Prompland - Dashboard</title>
+      </Head>
         {
           loading ?
-          <div className='flex justify-center'>
-            <AnimationLogo height={360} width={360} amount={1500} />
-          </div> :
+            <div className='flex justify-center'>
+              <AnimationLogo height={360} width={360} amount={1500} />
+            </div> :
             <>
-              <Navigation page={"financial"} menu={{ signOut }} user={authUser} />
-              <Finance user={authUser}/>
+              <Navigation page="dashboard" menu={{ signOut }} user={authUser} />
+              <Dashboard user={authUser} />
               <Footer />
             </>
         }
