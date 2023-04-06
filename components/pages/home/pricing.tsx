@@ -30,7 +30,7 @@ const tiers = [
     id: 'tier-enterprise',
     href: '#',
     priceMonthly: '$48',
-    description: 'Dedicated support and infrastructure for your company.',
+    description: 'Dedicated support and infrastructure for Prompland.',
     features: [
       'Unlimited products',
       'Unlimited subscribers',
@@ -52,7 +52,7 @@ export default function Pricing() {
     <div id="product" className="py-24 sm:pt-48">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-teal-600">Pricing</h2>
+          <h2 className="text-base font-semibold leading-7 text-vibrant-blue-600">Pricing</h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             Pricing plans for teams of&nbsp;all&nbsp;sizes
           </p>
@@ -77,14 +77,14 @@ export default function Pricing() {
                   <h3
                     id={tier.id}
                     className={classNames(
-                      tier.mostPopular ? 'text-teal-600' : 'text-gray-900',
+                      tier.mostPopular ? 'text-vibrant-blue-600' : 'text-gray-900',
                       'text-lg font-semibold leading-8'
                     )}
                   >
                     {tier.name}
                   </h3>
                   {tier.mostPopular ? (
-                    <p className="rounded-full bg-teal-600/10 py-1 px-2.5 text-xs font-semibold leading-5 text-teal-600">
+                    <p className="rounded-full bg-vibrant-blue-600/10 py-1 px-2.5 text-xs font-semibold leading-5 text-vibrant-blue-600">
                       Most popular
                     </p>
                   ) : null}
@@ -97,7 +97,7 @@ export default function Pricing() {
                 <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <CheckIcon className="h-6 w-5 flex-none text-teal-600" aria-hidden="true" />
+                      <CheckIcon className="h-6 w-5 flex-none text-vibrant-blue-600" aria-hidden="true" />
                       {feature}
                     </li>
                   ))}
@@ -108,9 +108,9 @@ export default function Pricing() {
                 aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular
-                    ? 'bg-teal-600 text-white shadow-sm hover:bg-teal-500'
-                    : 'text-teal-600 ring-1 ring-inset ring-teal-200 hover:ring-teal-300',
-                  'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600'
+                    ? 'bg-vibrant-blue-600 text-white shadow-sm hover:bg-vibrant-blue-500'
+                    : 'text-vibrant-blue-600 ring-1 ring-inset ring-vibrant-blue-200 hover:ring-vibrant-blue-300',
+                  'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vibrant-blue-600'
                 )}
               >
                 Buy plan

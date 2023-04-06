@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import AnimationLogo from '../animation/AnimationLogo'
 
-const navigation = [
-  { name: 'Product', href: '#product' },
-  { name: 'Features', href: '#features' },
+const navigation: any = [
+  // { name: 'Product', href: '#product' },
+  // { name: 'Features', href: '#features' },
   // { name: 'Company', href: '#' },
 ]
 
@@ -17,13 +18,11 @@ export default function NavigationHome() {
       <nav className="flex items-center justify-between p-3 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#home" className="-m-1.5 p-1.5 align-middle">
-            <span className="sr-only">Pocket Forest</span>
-            <img
-              className="h-16 w-auto inline mr-3 mh-auto"
-              src="/images/logos/logo.svg"
-              alt=""
-            />
-            <span className='inline text-2xl mh-auto font-thin'>Pocket <b className='text-teal-600 font-bold'>Forest</b></span>
+            <span className="sr-only">Prompland</span>
+            <div className='inline-block'>
+              <AnimationLogo width={32} height={32} amount={700} />
+            </div>
+            <span className='inline-block align-top text-2xl font-thin'>Promp<b className='text-vibrant-blue-600 font-bold'>land</b></span>
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -37,7 +36,7 @@ export default function NavigationHome() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
+          {navigation.map((item: any) => (
             <Link key={item.name} href={item.href}>
               <a  className="text-sm font-semibold leading-6 text-gray-900">
                 {item.name}
@@ -58,7 +57,7 @@ export default function NavigationHome() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-              <span className="sr-only">Pocket Forest</span>
+              <span className="sr-only">Prompland</span>
               <img
                 className="h-16 w-auto inline mr-3 mh-auto"
                 src="/images/logos/logo.svg"
@@ -77,7 +76,7 @@ export default function NavigationHome() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
+                { navigation.map((item: any) => (
                   <Link key={item.name} href={item.href} >
                     <a
                       onClick={() => setMobileMenuOpen(false)}

@@ -20,7 +20,7 @@ const LoggedIn = () => {
   return (
     <Layout page="financial">
         <Head>
-          <title>Pocket Forest - Financeiro</title>
+          <title>Prompland - Financeiro</title>
         </Head>
         {
           loading ?

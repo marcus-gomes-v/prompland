@@ -16,19 +16,19 @@ const features = [
   {
     name: 'City Integration',
     description:
-      'We have integration with cities, so we can provide a perfect fit between your pocket forest and the city maintence.',
+      'We have integration with cities, so we can provide a perfect fit between your Prompland and the city maintence.',
     icon: BuildingLibraryIcon,
   },
   {
     name: 'Sutainable',
     description:
-      'We build pocket forest that dosent need much maintence and care, we focus to create sustainable environments, we project to growth.',
+      'We build Prompland that dosent need much maintence and care, we focus to create sustainable environments, we project to growth.',
     icon: ArrowPathIcon,
   },
   {
     name: 'Personalized Project',
     description:
-      'We also work with personalized projects, creating an entire environment for your company space, we can make your company more green.',
+      'We also work with personalized projects, creating an entire environment for Prompland space, we can make Prompland more green.',
     icon: FingerPrintIcon,
   },
 ]
@@ -37,9 +37,9 @@ export default function Features() {
   return (
     <div id='features' className="mx-auto max-w-7xl pt-24 px-6">
       <div className="mx-auto max-w-2xl lg:text-center">
-        <h2 className="text-base font-semibold leading-7 text-teal-600">Features</h2>
+        <h2 className="text-base font-semibold leading-7 text-vibrant-blue-600">Features</h2>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          We know how to build your pocket <span className='text-teal-500'>forest.</span>
+          We know how to build your pocket <span className='text-vibrant-blue-500'>forest.</span>
         </p>
         <p className="mt-6 text-lg leading-8 text-gray-600">
           We have experience into reforestation field, we can create unique project using our specialists skills.
@@ -50,7 +50,7 @@ export default function Features() {
           {features.map((feature) => (
             <div key={feature.name} className="relative pl-16">
               <dt className="text-base font-semibold leading-7 text-gray-900">
-                <div className="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-teal-600">
+                <div className="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-vibrant-blue-600">
                   <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
                 {feature.name}

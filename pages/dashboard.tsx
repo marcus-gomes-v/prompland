@@ -20,7 +20,7 @@ const LoggedIn = () => {
   return (
     <Layout page="dashboard">
       <Head>
-        <title>Pocket Forest - Dashboard</title>
+        <title>Prompland - Dashboard</title>
       </Head>
         {
           loading ?

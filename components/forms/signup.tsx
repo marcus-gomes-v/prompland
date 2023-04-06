@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import { CubeTransparentIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
+import AnimationLogo from '../animation/AnimationLogo';
 
 
 export default function Signup({ createUserWithEmailAndPassword }: any) {
@@ -34,14 +33,10 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
   return (
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="text-center sm:mx-auto sm:w-full sm:max-w-md text-teal-600">
-          <Image
-            width={96}
-            height={96}
-            className="mx-auto w-auto"
-            src="/images/logos/logo.svg"
-            alt="Your Company"
-          />
+        <div className="text-center sm:mx-auto sm:w-full sm:max-w-md text-vibrant-blue-600">
+          <div className="flex justify-center">
+            <AnimationLogo width={128} height={128} amount={1500} />
+          </div>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-700">Create account</h2>
         </div>
 
@@ -62,7 +57,7 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     required
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
+                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-vibrant-blue-500 focus:outline-none focus:ring-vibrant-blue-500 sm:text-sm"
                   />
                 </div>
               </div>
@@ -80,7 +75,7 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
                     onChange={(event) => setPasswordOne(event.target.value)}
                     autoComplete="current-password"
                     required
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
+                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-vibrant-blue-500 focus:outline-none focus:ring-vibrant-blue-500 sm:text-sm"
                   />
                 </div>
               </div>
@@ -98,7 +93,7 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
                     onChange={(event) => setPasswordTwo(event.target.value)}
                     autoComplete="current-password"
                     required
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
+                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-vibrant-blue-500 focus:outline-none focus:ring-vibrant-blue-500 sm:text-sm"
                   />
                 </div>
               </div>
@@ -109,7 +104,7 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
                 </div>
                 <div className="flex items-center">
                   <Link href="/authentication">
-                    <a className="font-medium text-teal-600 hover:text-teal-500">
+                    <a className="font-medium text-vibrant-blue-600 hover:text-vibrant-blue-500">
                       I have an account
                     </a>
                   </Link>
@@ -119,7 +114,7 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                  className="flex w-full justify-center rounded-md border border-transparent bg-vibrant-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-vibrant-blue-700 focus:outline-none focus:ring-2 focus:ring-vibrant-blue-500 focus:ring-offset-2"
                 >
                   Create
                 </button>

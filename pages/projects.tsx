@@ -21,7 +21,7 @@ const LoggedIn = () => {
   return (
     <Layout page="projects">
       <Head>
-        <title>Pocket Forest - Projects</title>
+        <title>Prompland - Projects</title>
       </Head>
         {
           loading ?

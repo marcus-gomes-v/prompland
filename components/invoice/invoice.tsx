@@ -15,7 +15,7 @@ export default function Invoice({transaction}: {transaction: iFirestoreTransacti
                         height={100}
                         className="w-auto"
                         src="/images/logos/logo.svg"
-                        alt="Your Company"
+                        alt="Prompland"
                     />
                 </div>
                 <div className="flex flex-row mt-12 mb-2 ml-0 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-4xl print:text-2xl lg:ml-12 xl:ml-12">

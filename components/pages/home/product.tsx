@@ -21,7 +21,7 @@ const tiers = [
     priceMonthly: '$32',
     description: 'A plan that scales with your business.',
     features: [
-      '1 Pocket Forest',
+      '1 Prompland',
       'Up to 100 places',
       'Advanced analytics',
       '1 day, dedicated support response time',
@@ -33,10 +33,10 @@ const tiers = [
     id: 'tier-enterprise',
     href: '#',
     priceMonthly: '$48',
-    description: 'Dedicated support and infrastructure for your company.',
+    description: 'Dedicated support and infrastructure for Prompland.',
     features: [
       'Unlimited project',
-      'Choose your company place',
+      'Choose Prompland place',
       'Advanced analytics',
       '1-hour, dedicated support response time',
     ],
@@ -54,13 +54,13 @@ export default function Product() {
     <div id="product" className="mx-auto max-w-7xl pt-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-teal-600">Products</h2>
+          <h2 className="text-base font-semibold leading-7 text-vibrant-blue-600">Products</h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             Plans for companies of&nbsp;all&nbsp;sizes
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">
-          We have already though about how to build a perfect plan for your company size.
+          We have already though about how to build a perfect plan for Prompland size.
         </p>
         <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {tiers.map((tier, tierIdx) => (
@@ -78,14 +78,14 @@ export default function Product() {
                   <h3
                     id={tier.id}
                     className={classNames(
-                      tier.mostPopular ? 'text-teal-600' : 'text-gray-900',
+                      tier.mostPopular ? 'text-vibrant-blue-600' : 'text-gray-900',
                       'text-lg font-semibold leading-8'
                     )}
                   >
                     {tier.name}
                   </h3>
                   {tier.mostPopular ? (
-                    <p className="rounded-full bg-teal-600/10 py-1 px-2.5 text-xs font-semibold leading-5 text-teal-600">
+                    <p className="rounded-full bg-vibrant-blue-600/10 py-1 px-2.5 text-xs font-semibold leading-5 text-vibrant-blue-600">
                       Most popular
                     </p>
                   ) : null}
@@ -98,7 +98,7 @@ export default function Product() {
                 <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <CheckIcon className="h-6 w-5 flex-none text-teal-600" aria-hidden="true" />
+                      <CheckIcon className="h-6 w-5 flex-none text-vibrant-blue-600" aria-hidden="true" />
                       {feature}
                     </li>
                   ))}
@@ -109,9 +109,9 @@ export default function Product() {
                 aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular
-                    ? 'bg-teal-600 text-white shadow-sm hover:bg-teal-500'
-                    : 'text-teal-600 ring-1 ring-inset ring-teal-200 hover:ring-teal-300',
-                  'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600'
+                    ? 'bg-vibrant-blue-600 text-white shadow-sm hover:bg-vibrant-blue-500'
+                    : 'text-vibrant-blue-600 ring-1 ring-inset ring-vibrant-blue-200 hover:ring-vibrant-blue-300',
+                  'mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vibrant-blue-600'
                 )}
               >
                 Buy plan

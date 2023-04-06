@@ -42,9 +42,9 @@ export default function LogoCloud() {
       <div className="mt-16 flex justify-center">
         <p className="relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10 hover:ring-gray-900/20">
           <span className="hidden md:inline">
-            Transistor create more than 1,000 pocket forests arround poland working with us.
+            Transistor create more than 1,000 Promplands arround poland working with us.
           </span>
-          <a href="#" className="font-semibold text-teal-600">
+          <a href="#" className="font-semibold text-vibrant-blue-600">
             <span className="absolute inset-0" aria-hidden="true" /> Read our case study{' '}
             <span aria-hidden="true">&rarr;</span>
           </a>

@@ -10,7 +10,7 @@ const SignUp = () => {
   return (
     <Layout page="signup">
       <Head>
-        <title>Pocket Forest - Register</title>
+        <title>Prompland - Register</title>
       </Head>
       <Signup createUserWithEmailAndPassword={createUserWithEmailAndPassword} />
     </Layout>

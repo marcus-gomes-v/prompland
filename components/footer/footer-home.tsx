@@ -1,18 +1,8 @@
+import AnimationLogo from "../animation/AnimationLogo"
+
 const footerNavigation = {
-  solutions: [
-    { name: 'Pocket Forest', href: '#' },
-    { name: 'Taylor Made Project', href: '#' },
-    { name: 'Plant a Tree', href: '#' },
-    { name: 'Tree Data Cloud', href: '#' },
-  ],
-  support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-  ],
   company: [
     { name: 'About', href: '#' },
-    { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
     { name: 'Partners', href: '#' },
   ],
@@ -33,38 +23,11 @@ export default function FooterHome() {
           Footer
         </h2>
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <img
-            className="h-24"
-            src="/images/logos/logo.svg"
-            alt="Company name"
-          />
+          <div className="flex justify-center">
+            <AnimationLogo width={128} height={128} amount={1500} />
+          </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">Solutions</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {footerNavigation.solutions.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">Support</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {footerNavigation.support.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">Company</h3>
