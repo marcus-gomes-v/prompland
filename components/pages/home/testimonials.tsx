@@ -54,7 +54,7 @@ export default function Testimonials() {
           <figure>
             <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
               <p>
-                “Yo, I'm a photographer and stumbled upon this dope platform for AI prompts. Honestly, it's been a game changer for me! I've been creating some seriously rad images using the prompts I found here, and it's just so cool to see how it's taking my work to the next level. If you're into AI-generated visuals, you've gotta check it out!”
+                “Yo, I&apos;m a photographer and stumbled upon this dope platform for AI prompts. Honestly, it&apos;s been a game changer for me! I&apos;ve been creating some seriously rad images using the prompts I found here, and it&apos;s just so cool to see how it&apos;s taking my work to the next level. If you&apos;re into AI-generated visuals, you&apos;ve gotta check it out!”
               </p>
             </blockquote>
             <figcaption className="mt-6 text-base text-white">
