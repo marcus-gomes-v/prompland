@@ -63,7 +63,7 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
             <div className="sm:flex-auto">
               <h1 className="text-xl font-semibold text-vibrant-blue-600 my-3">Prompt Code</h1>
               <p className="mt-2 text-sm text-gray-700">
-                Here you need to click in each code from the first to the end and past in the ChatGPT and then you'll have the IA setup for your need.
+                Here you need to click in each code from the first to the end and past in the ChatGPT and then you&apos;ll have the IA setup for your need.
               </p>
             </div>
             <DetailsPromptList promptCode={prompt.data.textAreas} />

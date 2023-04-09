@@ -10,6 +10,7 @@ type FormValues = {
   hashtag: string;
   gptVersion: string[];
   textAreas: string[];
+  color: string;
 };
 
 type Prompt = {
@@ -26,8 +27,6 @@ type Prompt = {
 
 export default function EditPrompt({ user, promptId }: { user: iUser, promptId: string }) {
   
-  console.log(promptId)
-
   const [prompt, setPrompt] = useState<Prompt>({} as Prompt)
 
   useEffect(() => {

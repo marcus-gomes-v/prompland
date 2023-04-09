@@ -63,8 +63,8 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
       <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {prompts.map((prompt: any) => {
           return (
-            <Link href={`/prompt/${prompt.id}`}>
-              <li key={prompt.id} className="cursor-pointer col-span-1 divide-y divide-gray-200 rounded-lg bg-white hover:bg-gray-100 shadow">
+            <Link key={prompt.id} href={`/prompt/${prompt.id}`}>
+              <li className="cursor-pointer col-span-1 divide-y divide-gray-200 rounded-lg bg-white hover:bg-gray-100 shadow">
                 <div className="flex w-full items-center justify-between space-x-6 p-6">
                   <div className="flex-1 truncate">
                     <div className="flex items-center space-x-3">
