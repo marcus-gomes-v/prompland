@@ -30,5 +30,8 @@
   ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "./string-extensions.d.ts"
   ]
 }

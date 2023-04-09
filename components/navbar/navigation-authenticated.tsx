@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from "next/image";
 import AnimationLogo from '../animation/AnimationLogo';
+import Link from 'next/link';
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
@@ -41,13 +42,15 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
               <div className="relative flex flex-wrap items-center justify-center lg:justify-between">
                 {/* Logo */}
                 <div className="absolute left-0 flex-shrink-0 py-5 lg:static">
-                  <a href="#" className='flex align-middle gap-2'>
-                    <span className="sr-only">Prompland</span>
-                    <div className='inline-block'>
-                      <AnimationLogo width={32} height={32} amount={700} inversed={true} />
-                    </div>
-                    <span className='inline text-2xl mh-auto font-thin my-auto text-white'>Promp<b className='text-turquoise-500 font-bold'>land</b></span>
-                  </a>
+                  <Link href="/dashboard">
+                    <a className='flex align-middle gap-2'>
+                      <span className="sr-only">Prompland</span>
+                      <div className='inline-block'>
+                        <AnimationLogo width={32} height={32} amount={700} inversed={true} />
+                      </div>
+                      <span className='inline text-2xl mh-auto font-thin my-auto text-white'>Promp<b className='text-turquoise-500 font-bold'>land</b></span>
+                    </a>
+                  </Link>
                 </div>
 
                 {/* Right section on desktop */}
@@ -90,7 +93,7 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
                   </Menu>
                 </div>
 
-                <div className="w-full py-5 lg:border-t lg:border-white lg:border-opacity-20">
+                <div className="lg:hidden w-full py-9 lg:border-t lg:border-white lg:border-opacity-20">
                   <div className="lg:grid lg:grid-cols-3 lg:items-center lg:gap-8">
                     {/* Left nav */}
                     <div className="hidden lg:col-span-2 lg:block">
@@ -158,12 +161,8 @@ export default function Navigation({ page, menu, user }: {page: string, menu: an
                     <div className="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                       <div className="pt-3 pb-2">
                         <div className="flex items-center justify-between px-4">
-                          <div className='h-8 w-8 relative'>
-                            <Image
-                              layout='fill'
-                              className="h-8 w-auto"
-                              src="/images/logos/logo-vibrant-blue.svg"
-                              alt="Prompland" />
+                          <div className='inline-block'>
+                            <AnimationLogo width={64} height={64} amount={700} />
                           </div>
                           <div className="-mr-2">
                             <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-vibrant-blue-500">

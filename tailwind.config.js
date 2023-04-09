@@ -11,6 +11,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    linearGradientColors: theme => ({
+      'rainbow': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    }),
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -58,6 +61,9 @@ module.exports = {
         },
       },
     },
+  },
+  variants: {
+    borderWidth: ['hover', 'before'],
   },
   plugins: [
     require('@tailwindcss/forms'),

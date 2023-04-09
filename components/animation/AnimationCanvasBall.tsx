@@ -3,6 +3,9 @@ import * as THREE from 'three';
 
 const AnimationCanvasBall: React.FC = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
+  
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -76,8 +79,10 @@ const AnimationCanvasBall: React.FC = () => {
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     canvasRef.current.appendChild(renderer.domElement);
 
-    document.body.style.touchAction = 'none';
-    document.body.addEventListener('pointermove', onPointerMove);
+    if (!isMobile) {
+      document.body.addEventListener('pointermove', onPointerMove);
+      document.body.style.touchAction = 'none';
+    }
 
     window.addEventListener('resize', onWindowResize);
 
@@ -123,7 +128,9 @@ const AnimationCanvasBall: React.FC = () => {
     animate();
 
     return () => {
-      document.body.removeEventListener('pointermove', onPointerMove);
+      if (!isMobile) {
+        document.body.removeEventListener('pointermove', onPointerMove);
+      }
       window.removeEventListener('resize', onWindowResize);
       canvasRef.current?.removeChild(renderer.domElement);
     };

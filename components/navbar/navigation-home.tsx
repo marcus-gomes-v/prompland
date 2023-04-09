@@ -58,11 +58,9 @@ export default function NavigationHome() {
           <div className="flex items-center justify-between">
             <a href="#home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">Prompland</span>
-              <img
-                className="h-16 w-auto inline mr-3 mh-auto"
-                src="/images/logos/logo.svg"
-                alt=""
-              />
+              <div className='inline-block'>
+                <AnimationLogo width={64} height={64} amount={700} />
+              </div>
             </a>
             <button
               type="button"

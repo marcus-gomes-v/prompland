@@ -18,11 +18,11 @@ const LoggedIn = () => {
       router.push('/')
   }, [authUser, loading, router])
 
+  const pageTitle = 'Dashboard';
+  const pageDescription = 'Access your personalized Prompland dashboard to manage your projects, discover new prompts, and create your own.';
+
   return (
-    <Layout page="dashboard">
-      <Head>
-        <title>Prompland - Dashboard</title>
-      </Head>
+    <Layout page={pageTitle} title={pageTitle} description={pageDescription}>
         {
           loading ?
           <div className='flex justify-center'>

@@ -83,7 +83,7 @@ export default function AnimationLogo({ width, height, amount, inversed }: { wid
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     canvasRef.current.appendChild(renderer.domElement);
 
-    document.body.style.touchAction = 'none';
+    // document.body.style.touchAction = 'none';
     document.body.addEventListener('pointermove', onPointerMove);
 
     window.addEventListener('resize', onWindowResize);

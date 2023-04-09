@@ -1,16 +1,13 @@
 import Head from "next/head";
-export default function Layout({ children, page }: { children: React.ReactNode, page: string }) {
+export default function Layout({ children, page, title, description }: { children: React.ReactNode, page: string, title: string, description: string }) {
   const siteTitle = "Prompland: AI Prompt Sharing, Creation & Discovery Platform";
 
   return (
     <div className="bg-gray-50">
       <Head>
-        <title>{`${page} | ${siteTitle}`}</title>
+        <title>{`${title} | ${siteTitle}`}</title>
         <link rel="icon" href="/images/logos/logo.png" type="image/svg"></link>
-        <meta
-          name="description"
-          content="Prompland is a community platform for sharing, creating, and discovering AI prompts. Explore and contribute to the world of AI prompts today!"
-        />
+        <meta name="description" content={description} />
         <meta name="keywords" content="AI prompts, Prompland, artificial intelligence, AI, community, platform, share, create, discover, prompts" />
         <meta name="og:title" content={`${page} | ${siteTitle}`} />
         <meta name="og:description" content="Prompland is a community platform for sharing, creating, and discovering AI prompts. Explore and contribute to the world of AI prompts today!" />

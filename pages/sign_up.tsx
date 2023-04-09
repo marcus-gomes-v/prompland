@@ -6,12 +6,11 @@ import Head from 'next/head';
 
 const SignUp = () => {
   const { createUserWithEmailAndPassword }: any = useAuth();
+  const pageTitle = 'Sign Up';
+  const pageDescription = 'Create an account on Prompland to discover, create, and share writing prompts with a community of writers and readers.';
 
   return (
-    <Layout page="signup">
-      <Head>
-        <title>Prompland - Register</title>
-      </Head>
+    <Layout page={pageTitle} title={pageTitle} description={pageDescription}>
       <Signup createUserWithEmailAndPassword={createUserWithEmailAndPassword} />
     </Layout>
   )

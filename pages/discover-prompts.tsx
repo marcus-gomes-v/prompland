@@ -7,6 +7,7 @@ import Navigation from '../components/navbar/navigation-authenticated';
 import Footer from '../components/footer/footer-authenticated';
 import Head from 'next/head';
 import AnimationLogo from '../components/animation/AnimationLogo';
+import DiscoverPrompts from '../components/pages/discover-prompts';
 
 const LoggedIn = () => {
   const { authUser, loading, signOut } = useAuth();
@@ -18,11 +19,11 @@ const LoggedIn = () => {
       router.push('/')
   }, [authUser, loading, router])
 
+  const pageTitle = 'Discover Prompts';
+  const pageDescription = 'Explore a variety of writing prompts on Prompland and find inspiration for your next writing project.';
+
   return (
-    <Layout page="dashboard">
-      <Head>
-        <title>Prompland - Dashboard</title>
-      </Head>
+    <Layout page={pageTitle} title={pageTitle} description={pageDescription}>
         {
           loading ?
           <div className='flex justify-center'>
@@ -30,7 +31,7 @@ const LoggedIn = () => {
           </div> :
             <>
               <Navigation page="dashboard" menu={{ signOut }} user={authUser} />
-              <Dashboard user={authUser} />
+              <DiscoverPrompts user={authUser} />
               <Footer />
             </>
         }
