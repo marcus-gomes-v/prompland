@@ -8,7 +8,7 @@ export default function Layout({ children, page, title, description }: { childre
         <title>{`${title} | ${siteTitle}`}</title>
         <link rel="icon" href="/images/logos/logo.png" type="image/svg"></link>
         <meta name="description" content={description} />
-        <meta name="keywords" content="AI prompts, Prompland, artificial intelligence, AI, community, platform, share, create, discover, prompts" />
+        <meta name="keywords" content="AI prompts, Prompland, artificial intelligence, AI, community, platform, share, create, discover, prompts, ChatGPT prompt, Chat GPT integration, ChatGPT automation, ChatGPT, GPT-4, AI prompt sharing, AI prompt creation, AI prompt discovery" />
         <meta name="og:title" content={`${page} | ${siteTitle}`} />
         <meta name="og:description" content="Prompland is a community platform for sharing, creating, and discovering AI prompts. Explore and contribute to the world of AI prompts today!" />
         <meta name="og:image" content="/images/logos/logo.png" />
