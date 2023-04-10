@@ -9,7 +9,7 @@ type FormValues = {
   description: string;
   hashtag: string;
   gptVersion: string[];
-  textAreas: string[];
+  promptAreas: string[];
   color: string;
 };
 

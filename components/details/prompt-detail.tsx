@@ -10,7 +10,7 @@ type FormValues = {
   description: string;
   hashtag: string;
   gptVersion: string[];
-  textAreas: string[];
+  promptAreas: string[];
 };
 
 type Prompt = {
@@ -31,6 +31,7 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
 
   useEffect(() => {
     if (prompt){
+      console.log(prompt)
       setPromptDetail(prompt)
     }
   }, [prompt])  
@@ -66,7 +67,7 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
                 Here you need to click in each code from the first to the end and past in the ChatGPT and then you&apos;ll have the IA setup for your need.
               </p>
             </div>
-            <DetailsPromptList promptCode={prompt.data.textAreas} />
+            <DetailsPromptList promptCode={prompt.data.promptAreas} />
           </div>
         </>
       }

@@ -10,7 +10,7 @@ type FormValues = {
   description: string;
   hashtag: string;
   gptVersion: string[];
-  textAreas: string[];
+  promptAreas: string[];
   color: string;
 };
 
@@ -39,7 +39,7 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
     description: '',
     hashtag: '',
     gptVersion: ['default3.5'],
-    textAreas: [''],
+    promptAreas: [''],
     color: ''
   });
 
@@ -56,26 +56,26 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
   const handleTextAreaChange = (index: number, e: React.ChangeEvent<HTMLTextAreaElement>) => {
     
     
-    const newTextAreas = [...formValues.textAreas];
+    const newTextAreas = [...formValues.promptAreas];
 
     newTextAreas[index] = e.target.value;
     setFormValues(prevValues => ({
       ...prevValues,
-      textAreas: newTextAreas,
+      promptAreas: newTextAreas,
     }));
   };
 
   const handleAddTextArea = () => {
     setFormValues(prevValues => ({
       ...prevValues,
-      textAreas: [...prevValues.textAreas, ''],
+      promptAreas: [...prevValues.promptAreas, ''],
     }));
   };
 
   const handleRemoveTextArea = (index: number) => {
     setFormValues(prevValues => ({
       ...prevValues,
-      textAreas: prevValues.textAreas.filter((_, i) => i !== index),
+      promptAreas: prevValues.promptAreas.filter((_, i) => i !== index),
     }));
   };
 
@@ -167,7 +167,7 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
           description: promptData.description,
           hashtag: promptData.hashtag,
           gptVersion: promptData.gptVersion,
-          textAreas: promptData.textAreas,
+          promptAreas: promptData.promptAreas,
           color: promptData.color
         }
       )
@@ -263,7 +263,7 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Prompts
               </label>
-              {formValues.textAreas.map((textArea, index) => (
+              {formValues.promptAreas.map((textArea, index) => (
                 <div key={index} className="flex items-center mb-2">
                   <textarea
                     className="flex-grow mr-2 rounded-md border-gray-300 shadow-sm focus:border-vibrant-blue-600 focus:ring focus:ring-vibrant-blue-600 focus:ring-opacity-50"
@@ -277,7 +277,7 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
                       type="button"
                       className="bg-transparent text-red-600 transition duration-300 ease-in-out hover:text-red-800 focus:outline-none"
                       onClick={() => handleRemoveTextArea(index)}
-                      disabled={formValues.textAreas.length === 1}
+                      disabled={formValues.promptAreas.length === 1}
                     >
                       <MinusCircleIcon className="h-4 w-4 inline my-auto mr-1" aria-hidden="true" />
                     </button>

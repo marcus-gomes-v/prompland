@@ -70,7 +70,7 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
                     <div className="flex items-center space-x-3">
                       <h3 className="truncate text-sm font-medium text-gray-900">{prompt.name}</h3>
                       <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                        {prompt.textAreas.length} Commands
+                        {prompt.promptAreas.length} Commands
                       </span>
                     </div>
                     <p className="mt-1 truncate text-sm text-gray-500">{prompt.description}</p>
