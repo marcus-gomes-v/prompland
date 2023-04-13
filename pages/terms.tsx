@@ -31,14 +31,14 @@ export default function Privacy() {
               </Link>
             </div>
             <h1 className="text-4xl lg:text-6xl font-thin tracking-tight text-gray-800 text-center">
-              Terms of Service
+              Terms of Service:
             </h1>
             <div className=" py-12">
               
               <div className="lg:col-span-2">
                 <div className="prose prose-indigo prose-lg text-gray-500">
                   <p className="mt-6 text-md lg:text-lg text-gray-800 text-justify">
-                    These Terms of Service ("Terms") govern your use of Prompland, an AI prompt sharing, creation, and discovery platform operated by Prompland, Inc. ("Prompland"). By using Prompland, you agree to these Terms, as well as our Privacy Policy, which is incorporated by reference into these Terms.
+                    These Terms of Service (&quot;Terms&quot;) govern your use of Prompland, an AI prompt sharing, creation, and discovery platform operated by Prompland, Inc. (&quot;Prompland&quot;). By using Prompland, you agree to these Terms, as well as our Privacy Policy, which is incorporated by reference into these Terms.
                   </p>
                   <h2 className='mt-9 uppercase text-md lg:text-2xl text-gray-800'>Use of Prompland:</h2>
                   <p className="mt-3 text-md lg:text-lg text-gray-500 text-justify">
@@ -46,7 +46,7 @@ export default function Privacy() {
                   </p>
                   <h2 className='mt-9 uppercase text-md lg:text-2xl text-gray-800'>Account registration:</h2>
                   <p className="mt-3 text-md lg:text-lg text-gray-500 text-justify">
-                    To use Prompland, you must create an account using your Google account credentials or by providing your email address and creating a password. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You may not share your account information with others or use another person's account.
+                    To use Prompland, you must create an account using your Google account credentials or by providing your email address and creating a password. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You may not share your account information with others or use another person&apos;s account.
                   </p>
                   <h2 className='mt-9 uppercase text-md lg:text-2xl text-gray-800'>User-generated content:</h2>
                   <p className="mt-3 text-md lg:text-lg text-gray-500 text-justify">
