@@ -27,6 +27,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         <loc>https://www.prompland.com/about</loc>
         <lastmod>2023-04-14</lastmod>
       </url>
+       <url>
+        <loc>https://www.prompland.com/privacy</loc>
+        <lastmod>2023-04-14</lastmod>
+      </url>
+       <url>
+        <loc>https://www.prompland.com/terms</loc>
+        <lastmod>2023-04-14</lastmod>
+      </url>
     </urlset>`
 
   res.end(xml)
