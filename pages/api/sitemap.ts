@@ -23,6 +23,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         <loc>https://www.prompland.com/sign_up</loc>
         <lastmod>2023-04-06</lastmod>
       </url>
+      <url>
+        <loc>https://www.prompland.com/about</loc>
+        <lastmod>2023-04-14</lastmod>
+      </url>
     </urlset>`
 
   res.end(xml)

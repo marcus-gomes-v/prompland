@@ -2,9 +2,7 @@ import AnimationLogo from "../animation/AnimationLogo"
 
 const footerNavigation = {
   company: [
-    { name: 'About', href: '/about' },
-    { name: 'Press', href: '#' },
-    { name: 'Partners', href: '#' },
+    { name: 'About', href: '/about' }
   ],
   legal: [
     { name: 'Privacy', href: '#' },
