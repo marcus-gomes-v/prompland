@@ -5,8 +5,8 @@ const footerNavigation = {
     { name: 'About', href: '/about' }
   ],
   legal: [
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
+    { name: 'Privacy', href: '/privacy' },
+    { name: 'Terms', href: '/terms' },
   ],
 }
 
