@@ -17,13 +17,15 @@ export default function NavigationHome() {
     <header className="sticky inset-x-0 top-0 z-50  bg-gray-50">
       <nav className="flex items-center justify-between p-3 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5 align-middle">
-            <span className="sr-only">Prompland</span>
-            <div className='inline-block'>
-              <AnimationLogo width={32} height={32} amount={700} />
-            </div>
-            <span className='inline-block align-top text-2xl font-thin'>Promp<b className='text-vibrant-blue-600 font-bold'>land</b></span>
-          </a>
+          <Link href="/" >
+            <a  className="-m-1.5 p-1.5 align-middle">
+              <span className="sr-only">Prompland</span>
+              <div className='inline-block'>
+                <AnimationLogo width={32} height={32} amount={700} />
+              </div>
+              <span className='inline-block align-top text-2xl font-thin'>Promp<b className='text-vibrant-blue-600 font-bold'>land</b></span>
+            </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -56,12 +58,14 @@ export default function NavigationHome() {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-              <span className="sr-only">Prompland</span>
-              <div className='inline-block'>
-                <AnimationLogo width={64} height={64} amount={700} />
-              </div>
-            </a>
+            <Link href="/" >
+              <a  className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+                <span className="sr-only">Prompland</span>
+                <div className='inline-block'>
+                  <AnimationLogo width={64} height={64} amount={700} />
+                </div>
+              </a>
+            </Link>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
