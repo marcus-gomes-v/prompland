@@ -4,6 +4,7 @@ import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/20/solid';
 import firebase from 'firebase';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
+import SwitchInput from '../inputs/switch-input';
 
 type FormValues = {
   name: string;
@@ -12,6 +13,7 @@ type FormValues = {
   gptVersion: string[];
   promptAreas: string[];
   color: string;
+  sequential: boolean;
 };
 
 type NewPromptFormProps = {
@@ -26,6 +28,8 @@ type NewPromptFormProps = {
     };
     date: string;
     data: FormValues;
+    votes?: [],
+    votesCount?: number
   };
 };
 
@@ -40,7 +44,8 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
     hashtag: '',
     gptVersion: ['default3.5'],
     promptAreas: [''],
-    color: ''
+    color: '',
+    sequential: false
   });
 
   
@@ -124,6 +129,8 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
             },
             date: new Date(),
             data: data,
+            votes: [],
+            votesCount: 0
           })
       }
       Swal.fire('Success', 'Prompt saved with success', 'success').then(() => {
@@ -160,7 +167,6 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
   useEffect(() => {
     if (prompt?.data){
       const promptData = prompt?.data
-      console.log(promptData)
       setFormValues(
         {
           name: promptData.name,
@@ -168,11 +174,20 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
           hashtag: promptData.hashtag,
           gptVersion: promptData.gptVersion,
           promptAreas: promptData.promptAreas,
-          color: promptData.color
+          color: promptData.color,
+          sequential: promptData.sequential || false,
         }
       )
     }
   }, [prompt])  
+
+
+  const handleInputSwitch = (e: boolean) => {
+    setFormValues(prevValues => ({
+      ...prevValues,
+      sequential: e,
+    }));
+  }
 
 
   return (
@@ -260,6 +275,9 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
         <div className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
           <div className="px-4 py-6 sm:p-8">
             <div className='w-full'>
+              <div className='mb-6'>
+                <SwitchInput title='Sequential Prompt' subTitle='Those prompts should be use sequential to setup ChatGPT?' handle={handleInputSwitch} startState={formValues.sequential} />
+              </div>
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Prompts
               </label>

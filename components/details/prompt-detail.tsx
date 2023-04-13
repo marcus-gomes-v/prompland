@@ -11,6 +11,7 @@ type FormValues = {
   hashtag: string;
   gptVersion: string[];
   promptAreas: string[];
+  sequential?: boolean;
 };
 
 type Prompt = {
@@ -53,7 +54,7 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
                 <div>
                   <span className='text-sm font-semibold text-turquoise-600'>Author</span>
                     <p className="font-semibold">{prompt.author_data.name}</p>
-                    <p className="text-gray-600">{prompt.author_data.email}</p>
+                    {/* <p className="text-gray-600">{prompt.author_data.email}</p> */}
                 </div>
               </div>
               <span className='text-sm font-semibold text-turquoise-600'>Tags: </span>
@@ -62,12 +63,20 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
           </div>
           <div className="bg-white rounded-lg shadow-lg p-5 mb-5">
             <div className="sm:flex-auto">
-              <h1 className="text-xl font-semibold text-vibrant-blue-600 my-3">Prompt Code</h1>
-              <p className="mt-2 text-sm text-gray-700">
-                Here you need to click in each code from the first to the end and past in the ChatGPT and then you&apos;ll have the IA setup for your need.
+              <h1 className="text-xl font-semibold text-turquoise-600 my-3">Prompt Code</h1>
+              <p className="mt-2 text-md text-gray-700">
+                {prompt.data.sequential ? 
+                  <>
+                    To set up ChatGPT for your specific needs, simply click on each code from the beginning to the end, copy them, and paste them into ChatGPT. This will tailor the AI to your requirements.
+                  </>
+                  :
+                  <>
+                    Browse through all the prompts available in this category and try them out to discover which one appeals to you the most.
+                  </>
+                } 
               </p>
             </div>
-            <DetailsPromptList promptCode={prompt.data.promptAreas} />
+            <DetailsPromptList promptCode={prompt.data.promptAreas} sequential={prompt.data.sequential || false}/>
           </div>
         </>
       }

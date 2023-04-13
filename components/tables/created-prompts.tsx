@@ -73,24 +73,24 @@ export default function CreatedPromptsTable({ user }: { user: iUser }) {
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white">
             {prompts ? prompts.map((prompt: any) => (
-              <tr key={prompt.id}>
-                <td className="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 sm:pl-0 md:pl-3">
-                  {prompt.name}
-                </td>
-                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                  {prompt.gptVersion.map((version: string) => formatFunction(version)).join(', ')}
-                </td>
-                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 flex justify-end">
-                  <Link href={`/edit-prompt/${prompt.id}`}>
-                    <button type="button"
-                      className="bg-transparent text-green-500 border border-green-500 transition duration-300 ease-in-out hover:bg-green-600 hover:text-white focus:outline-none rounded-md px-2 py-1"
-                    >
-                      <PencilIcon className="h-4 w-4 inline my-auto mr-1" aria-hidden="true" />
-                      <span className='inline align-middle'>Edit Prompt</span>
-                    </button>
-                  </Link>
-                </td>
-              </tr>
+                <tr key={prompt.id}>
+                  <td className="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 sm:pl-0 md:pl-3">
+                    {prompt.name}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                    {prompt.gptVersion.map((version: string) => formatFunction(version)).join(', ')}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 flex justify-end">
+                    <Link href={`/edit-prompt/${prompt.id}`}>
+                      <button type="button"
+                        className="bg-transparent text-green-500 border border-green-500 transition duration-300 ease-in-out hover:bg-green-600 hover:text-white focus:outline-none rounded-md px-2 py-1"
+                      >
+                        <PencilIcon className="h-4 w-4 inline my-auto mr-1" aria-hidden="true" />
+                        <span className='inline align-middle'>Edit Prompt</span>
+                      </button>
+                    </Link>
+                  </td>
+                </tr>
             )) : ''}
           </tbody>
         </table>

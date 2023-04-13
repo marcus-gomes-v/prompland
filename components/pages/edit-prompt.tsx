@@ -11,6 +11,7 @@ type FormValues = {
   gptVersion: string[];
   promptAreas: string[];
   color: string;
+  sequential: boolean;
 };
 
 type Prompt = {
@@ -23,6 +24,8 @@ type Prompt = {
   };
   date: string;
   data: FormValues;
+  votes?: [];
+  votesCount?: number;
 };
 
 export default function EditPrompt({ user, promptId }: { user: iUser, promptId: string }) {

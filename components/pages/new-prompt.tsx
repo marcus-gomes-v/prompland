@@ -1,7 +1,6 @@
 import { iUser } from '../../typings';
 import Image from 'next/image';
 import NewPromptForm from '../forms/new-prompt';
-import DynamicImport from '../forms/dynamic-import';
 
 export default function NewPrompt({ user }: { user: iUser }) {
   
@@ -36,7 +35,6 @@ export default function NewPrompt({ user }: { user: iUser }) {
               </div>
             </section>
 
-            {/* <DynamicImport user={user} /> */}
             {/* Starting New Prompt */}
             <NewPromptForm user={user} />
             {/* End New Prompt */}
