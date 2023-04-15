@@ -3,15 +3,53 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import AnimationLogo from '../animation/AnimationLogo'
+import { useRouter } from 'next/router'
+
+
+interface ActiveLinkProps {
+  href: string
+  children: React.ReactNode
+}
+
+const ActiveLink: React.FC<ActiveLinkProps> = ({ children, href }) => {
+  const router = useRouter()
+
+  // Check if the current URL matches the link's href
+  const isActive = router.pathname === href
+
+  return (
+    <Link href={href}>
+      <a className={`text-sm font-semibold leading-6 ${isActive ? 'text-vibrant-blue-600' : 'text-gray-900'}`}>
+        {children}
+      </a>
+    </Link>
+  )
+}
 
 const navigation: any = [
-  // { name: 'Product', href: '#product' },
-  // { name: 'Features', href: '#features' },
-  // { name: 'Company', href: '#' },
+  { name: 'For Creators', href: '/for-creators' },
+  { name: 'For Individuals', href: '/for-individuals' },
+  { name: 'For Companies', href: '/for-companies' },
 ]
+
 
 export default function NavigationHome() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const ActiveLinkMobile: React.FC<ActiveLinkProps> = ({ children, href }) => {
+    const router = useRouter()
+
+    // Check if the current URL matches the link's href
+    const isActive = router.pathname === href
+
+    return (
+      <Link href={href}>
+        <a onClick={() => setMobileMenuOpen(false)} className={`-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 ${isActive ? 'text-vibrant-blue-600' : 'text-gray-900'}`}>
+          {children}
+        </a>
+      </Link>
+    )
+  }
 
   return (
     <header className="sticky inset-x-0 top-0 z-50  bg-gray-50">
@@ -39,11 +77,9 @@ export default function NavigationHome() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item: any) => (
-            <Link key={item.name} href={item.href}>
-              <a  className="text-sm font-semibold leading-6 text-gray-900">
-                {item.name}
-              </a>
-            </Link>
+            <ActiveLink key={item.name} href={item.href}>
+              {item.name}
+            </ActiveLink>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -78,15 +114,10 @@ export default function NavigationHome() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                { navigation.map((item: any) => (
-                  <Link key={item.name} href={item.href} >
-                    <a
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      {item.name}
-                    </a>
-                  </Link>
+                {navigation.map((item: any) => (
+                  <ActiveLinkMobile key={item.name} href={item.href}>
+                    {item.name}
+                  </ActiveLinkMobile>
                 ))}
               </div>
               <div className="py-6">
