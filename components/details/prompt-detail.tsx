@@ -33,6 +33,7 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
   useEffect(() => {
     if (prompt){
       setPromptDetail(prompt)
+      console.log(prompt)
     }
   }, [prompt])  
   return (

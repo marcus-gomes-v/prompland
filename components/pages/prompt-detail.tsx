@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import PromptDetailData from '../details/prompt-detail';
+import AnimationLogo from '../animation/AnimationLogo';
 
 type FormValues = {
   name: string;
@@ -25,7 +26,7 @@ type Prompt = {
 };
 
 export default function PromptDetail({ user, promptId }: { user: iUser, promptId: string }) {
-
+  const [loading, setLoading] = useState(true);
   const [prompt, setPrompt] = useState<Prompt>()
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function PromptDetail({ user, promptId }: { user: iUser, promptId
         localStorage.setItem(`prompt-${promptId}`, JSON.stringify(prompt));
         console.log('From Firebase')
       }
+      setLoading(false);
     };
     fetchPromptData();
   }, [promptId]);
@@ -75,9 +77,13 @@ export default function PromptDetail({ user, promptId }: { user: iUser, promptId
                 </div>
               </div>
             </section>
-            {prompt && 
+            {loading ? (
+              <div className='flex justify-center'>
+                <AnimationLogo height={360} width={360} amount={1500} />
+              </div>
+              ) : (prompt && 
               <PromptDetailData user={user} prompt={prompt} />
-            }
+            )}
           </div>
         </div>
       </div>
