@@ -4,6 +4,8 @@ import NewPromptForm from '../forms/new-prompt';
 import { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import DetailsPromptList from '../lists/deails-prompt-list';
+import Link from 'next/link';
+import { BackwardIcon } from '@heroicons/react/20/solid';
 
 type FormValues = {
   name: string;
@@ -38,6 +40,11 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
   }, [prompt])  
   return (
     <div>
+      <Link href="/discover-prompts" >
+        <a className="flex items-center py-3 text-gray-900 text-sm">
+          <BackwardIcon className="mr-2 h-3 w-3" /> Back to list
+        </a>
+      </Link>
       <h1 className="text-xl font-semibold text-vibrant-blue-600 my-3">Prompt Detail</h1>
 
       {
