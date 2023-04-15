@@ -27,13 +27,25 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         <loc>https://www.prompland.com/about</loc>
         <lastmod>2023-04-14</lastmod>
       </url>
-       <url>
+      <url>
         <loc>https://www.prompland.com/privacy</loc>
         <lastmod>2023-04-14</lastmod>
       </url>
-       <url>
+      <url>
         <loc>https://www.prompland.com/terms</loc>
         <lastmod>2023-04-14</lastmod>
+      </url>
+      <url>
+        <loc>https://www.prompland.com/for-creators</loc>
+        <lastmod>2023-04-15</lastmod>
+      </url>
+      <url>
+        <loc>https://www.prompland.com/for-individuals</loc>
+        <lastmod>2023-04-15</lastmod>
+      </url>
+      <url>
+        <loc>https://www.prompland.com/for-companies</loc>
+        <lastmod>2023-04-15</lastmod>
       </url>
     </urlset>`
 
