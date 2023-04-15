@@ -18,7 +18,6 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
     if (passwordOne === passwordTwo)
       createUserWithEmailAndPassword(email, passwordOne)
         .then((authUser: any) => {
-          console.log("Success. The user is created in firebase")
           router.push("/dashboard");
         })
         .catch((error: any) => {

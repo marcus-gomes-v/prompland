@@ -50,6 +50,30 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
   const [filteredPrompts, setFilteredPrompts] = useState([]);
   const [openModal, setOpenModal] = useState(false)
 
+  // CACHE AREA
+  function savePromptsToLocalStorage(prompts: any) {
+    const data = {
+      prompts: prompts,
+      timestamp: new Date().getTime(),
+    };
+    localStorage.setItem('cachedPrompts', JSON.stringify(data));
+  }
+
+  function loadPromptsFromLocalStorage() {
+    const data = localStorage.getItem('cachedPrompts');
+    if (data) {
+      const parsedData = JSON.parse(data);
+      return parsedData;
+    }
+    return null;
+  }
+
+  function isCacheExpired(timestamp: any, cacheDurationInMinutes = 15) {
+    const now = new Date().getTime();
+    const difference = (now - timestamp) / (1000 * 60);
+    return difference > cacheDurationInMinutes;
+  }
+
   const formatFunction = (version: string) => {
       // Replace "gpt" with "Gpt " and "default" with "Default "
     return version.replace(/gpt/g, 'GPT ').replace(/default/g, 'Default ').replace(/legacy/g, 'Legacy ');
@@ -94,7 +118,6 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
       votesCount: firebase.firestore.FieldValue.increment(incrementValue),
     });
 
-    console.log(`User ${user.uid} ${userIndex === -1 ? 'liked' : 'unliked'} prompt ${id}`);
   };
 
   useEffect(() => {
@@ -115,23 +138,33 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
   }, [prompts, searchTerm]);
 
   useEffect(() => {
-    const unsubscribe = firebase
-      .firestore()
-      .collection('prompts')
-      .orderBy('votesCount', 'desc') // Order by 'votesCount' field in descending order
-      .onSnapshot((querySnapshot) => {
-        let aPrompts = [] as any;
-        querySnapshot.forEach((doc) => {
-          aPrompts.push({ ...doc.data()?.data, votes: doc.data()?.votes, id: doc.id, votesCount: doc.data()?.votesCount });
-        });
-        setPrompts(aPrompts);
-      });
+    const cachedData = loadPromptsFromLocalStorage();
 
-    // Clean up the listener on unmount
-    return () => {
-      unsubscribe();
-    };
+    if (cachedData && !isCacheExpired(cachedData.timestamp)) {
+      setPrompts(cachedData.prompts);
+      console.log('Load from the cache')
+    } else {
+      console.log('Load from firebase')
+      const unsubscribe = firebase
+        .firestore()
+        .collection('prompts')
+        .orderBy('votesCount', 'desc')
+        .onSnapshot((querySnapshot) => {
+          let aPrompts = [] as any;
+          querySnapshot.forEach((doc) => {
+            aPrompts.push({ ...doc.data()?.data, votes: doc.data()?.votes, id: doc.id, votesCount: doc.data()?.votesCount });
+          });
+          setPrompts(aPrompts);
+          savePromptsToLocalStorage(aPrompts);
+        });
+
+      // Clean up the listener on unmount
+      return () => {
+        unsubscribe();
+      };
+    }
   }, []);
+
 
   return (
     <div>

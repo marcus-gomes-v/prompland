@@ -1,6 +1,5 @@
 import { iUser } from '../../typings';
 import Image from 'next/image';
-import NewPromptForm from '../forms/new-prompt';
 import { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import PromptDetailData from '../details/prompt-detail';
@@ -26,19 +25,25 @@ type Prompt = {
 };
 
 export default function PromptDetail({ user, promptId }: { user: iUser, promptId: string }) {
-  
+
   const [prompt, setPrompt] = useState<Prompt>()
 
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection('prompts')
-      .doc(promptId)
-      .onSnapshot((doc) => {
-        const prompt = { ...doc.data(), id: doc.id } as Prompt
-        setPrompt(prompt)
-      })
-  }, [])  
+    const fetchPromptData = async () => {
+      const cachedPrompt = localStorage.getItem(`prompt-${promptId}`);
+      if (cachedPrompt) {
+        setPrompt(JSON.parse(cachedPrompt));
+        console.log('From Cache')
+      } else {
+        const doc = await firebase.firestore().collection('prompts').doc(promptId).get();
+        const prompt = { ...doc.data(), id: doc.id } as Prompt;
+        setPrompt(prompt);
+        localStorage.setItem(`prompt-${promptId}`, JSON.stringify(prompt));
+        console.log('From Firebase')
+      }
+    };
+    fetchPromptData();
+  }, [promptId]);
 
   return (
     <main className="-mt-24 pb-8">

@@ -18,7 +18,6 @@ export default function Authentication({ loginWithGoogle, signInWithEmailAndPass
     setError(null)
     signInWithEmailAndPassword(email, password)
       .then((authUser: any) => {
-        console.log("Success. The user is created in firebase")
         router.push('/dashboard');
       })
       .catch((error: any) => {
@@ -31,7 +30,6 @@ export default function Authentication({ loginWithGoogle, signInWithEmailAndPass
     setError(null)
     loginWithGoogle()
       .then((authUser: any) => {
-        console.log("Success. The user is created in firebase")
         router.push('/dashboard');
       })
       .catch((error: any) => {

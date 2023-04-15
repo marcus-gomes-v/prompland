@@ -1,36 +1,44 @@
 import firebase from 'firebase'
 import 'firebase/firestore'
-import { iUser,  } from "../../typings"
+import { iUser, } from "../../typings"
 import { useEffect, useState } from "react";
-import Price from '../utils/Price';
 import Link from 'next/link';
 import { PencilIcon, SquaresPlusIcon } from '@heroicons/react/20/solid';
 
-
 export default function CreatedPromptsTable({ user }: { user: iUser }) {
-
   const [prompts, setPrompts] = useState([])
-  
 
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection('prompts')
-      .where('author', '==', firebase.auth().currentUser?.uid)
-      .onSnapshot((querySnapshot) => {
+    const fetchPrompts = async () => {
+      const cachedPrompts = localStorage.getItem('created-prompts');
+
+      if (cachedPrompts) {
+        setPrompts(JSON.parse(cachedPrompts));
+        console.log('From Cache')
+      } else {
+        const querySnapshot = await firebase
+          .firestore()
+          .collection('prompts')
+          .where('author', '==', firebase.auth().currentUser?.uid)
+          .get();
+
         let aPrompts = [] as any
         querySnapshot.forEach((doc) => {
           aPrompts.push({ ...doc.data()?.data, id: doc.id })
-        })
-        setPrompts(aPrompts)
-      })
-  }, [])  
+        });
+
+        setPrompts(aPrompts);
+        localStorage.setItem('created-prompts', JSON.stringify(aPrompts));
+        console.log('From Firebase')
+      }
+    };
+
+    fetchPrompts();
+  }, [])
 
   const formatFunction = (version: string) => {
-      // Replace "gpt" with "Gpt " and "default" with "Default "
     return version.replace(/gpt/g, 'GPT ').replace(/default/g, 'Default ').replace(/legacy/g, 'Legacy ');
   }
-  
 
   return (
     <div>
