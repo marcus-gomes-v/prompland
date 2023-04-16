@@ -11,6 +11,7 @@ const formatAuthUser = (user: any) => ({
   imageUrl: user.photoURL || '/images/avatar/placeholder.svg',
   code: '',
   type: 'user',
+  invited: false,
   teams: []
 });
 
@@ -72,6 +73,9 @@ export default function useFirebaseAuth() {
   const createUserWithEmailAndPassword = (email: any, password: any) =>
     firebase.auth().createUserWithEmailAndPassword(email, password);
 
+  const sendPasswordResetEmail = (email: string) =>
+    firebase.auth().sendPasswordResetEmail(email);
+
   const provider = new firebase.auth.GoogleAuthProvider();
 
   const loginWithGoogle = () => firebase.auth().signInWithPopup(provider)
@@ -89,6 +93,7 @@ export default function useFirebaseAuth() {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     signOut,
-    loginWithGoogle
+    loginWithGoogle,
+    sendPasswordResetEmail
   };
 }

@@ -96,12 +96,13 @@ export default function Authentication({ loginWithGoogle, signInWithEmailAndPass
                     </a>
                   </Link>
                 </div>
-
-                {/* <div className="text-sm">
-                  <a href="#" className="font-medium text-vibrant-blue-600 hover:text-vibrant-blue-500">
-                    Forgot your password?
-                  </a>
-                </div> */}
+                <div className="text-sm">
+                    <Link href="/reset-password">
+                    <a className="font-medium text-vibrant-blue-600 hover:text-vibrant-blue-500">
+                      Forgot your password?
+                    </a>
+                  </Link>
+                </div>
               </div>
 
               <div>

@@ -21,6 +21,8 @@ const LoggedIn = () => {
   const pageTitle = 'Dashboard';
   const pageDescription = 'Access your personalized Prompland dashboard to manage your projects, discover new prompts, and create your own.';
 
+ 
+
   return (
     <Layout page={pageTitle} title={pageTitle} description={pageDescription}>
         {

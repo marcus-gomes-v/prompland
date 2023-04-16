@@ -102,6 +102,7 @@ export default function Signup({ createUserWithEmailAndPassword }: any) {
 
                 </div>
                 <div className="flex items-center">
+                  
                   <Link href="/authentication">
                     <a className="font-medium text-vibrant-blue-600 hover:text-vibrant-blue-500">
                       I have an account

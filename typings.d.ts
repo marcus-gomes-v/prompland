@@ -6,6 +6,7 @@ export interface iUser {
   code: string;
   type: string;
   teams: [];
+  invited: boolean;
   fullname?: string; 
   phone_numbers?: [
     string
