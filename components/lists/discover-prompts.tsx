@@ -195,7 +195,7 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
             <CommandLineIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" />
           </button>
         </div>
-        <div className="flex space-x-2">
+        <div className="hidden lg:flex space-x-2">
           {searchBadges.map((badge, index) => (
             <span
               key={index}
