@@ -4,16 +4,19 @@ import { iUser, } from "../../typings"
 import { useEffect, useState } from "react";
 import Link from 'next/link';
 import { PencilIcon, SquaresPlusIcon } from '@heroicons/react/20/solid';
+import { encodeWithKey, decodeWithKey } from '../../lib/cipher';
 
 export default function CreatedPromptsTable({ user }: { user: iUser }) {
   const [prompts, setPrompts] = useState([])
 
   useEffect(() => {
     const fetchPrompts = async () => {
+      const userKey = user.uid;
       const cachedPrompts = localStorage.getItem('created-prompts');
 
       if (cachedPrompts) {
-        setPrompts(JSON.parse(cachedPrompts));
+        const decodedPrompts = decodeWithKey(cachedPrompts, userKey);
+        setPrompts(JSON.parse(decodedPrompts));
         console.log('From Cache')
       } else {
         const querySnapshot = await firebase
@@ -28,13 +31,15 @@ export default function CreatedPromptsTable({ user }: { user: iUser }) {
         });
 
         setPrompts(aPrompts);
-        localStorage.setItem('created-prompts', JSON.stringify(aPrompts));
+        const encodedPrompts = encodeWithKey(JSON.stringify(aPrompts), userKey);
+        localStorage.setItem('created-prompts', encodedPrompts);
         console.log('From Firebase')
       }
     };
 
     fetchPrompts();
   }, [])
+
 
   const formatFunction = (version: string) => {
     return version.replace(/gpt/g, 'GPT ').replace(/default/g, 'Default ').replace(/legacy/g, 'Legacy ');

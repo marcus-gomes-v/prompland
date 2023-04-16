@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import PromptDetailData from '../details/prompt-detail';
 import AnimationLogo from '../animation/AnimationLogo';
+import { encodeWithKey, decodeWithKey } from '../../lib/cipher';
 
 type FormValues = {
   name: string;
@@ -31,21 +32,25 @@ export default function PromptDetail({ user, promptId }: { user: iUser, promptId
 
   useEffect(() => {
     const fetchPromptData = async () => {
+      const userKey = user.uid;
       const cachedPrompt = localStorage.getItem(`prompt-${promptId}`);
+
       if (cachedPrompt) {
-        setPrompt(JSON.parse(cachedPrompt));
+        const decodedPrompt = decodeWithKey(cachedPrompt, userKey);
+        setPrompt(JSON.parse(decodedPrompt));
         console.log('From Cache')
       } else {
         const doc = await firebase.firestore().collection('prompts').doc(promptId).get();
         const prompt = { ...doc.data(), id: doc.id } as Prompt;
         setPrompt(prompt);
-        localStorage.setItem(`prompt-${promptId}`, JSON.stringify(prompt));
+        const encodedPrompt = encodeWithKey(JSON.stringify(prompt), userKey);
+        localStorage.setItem(`prompt-${promptId}`, encodedPrompt);
         console.log('From Firebase')
       }
       setLoading(false);
     };
     fetchPromptData();
-  }, [promptId]);
+  }, [promptId, user]);
 
   return (
     <main className="-mt-24 pb-8">

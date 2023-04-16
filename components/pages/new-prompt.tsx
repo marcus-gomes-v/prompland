@@ -1,7 +1,7 @@
 import { iUser } from '../../typings';
 import Image from 'next/image';
 import NewPromptForm from '../forms/new-prompt';
-import DynamicUpdateAutors from '../forms/dynamic-update-autors';
+import DynamicUpdateRatings from '../forms/dynamic-update-rating';
 
 export default function NewPrompt({ user }: { user: iUser }) {
   
@@ -35,6 +35,7 @@ export default function NewPrompt({ user }: { user: iUser }) {
                 </div>
               </div>
             </section>
+            {/* <DynamicUpdateRatings user={user} /> */}
             {/* Starting New Prompt */}
             <NewPromptForm user={user} />
             {/* End New Prompt */}

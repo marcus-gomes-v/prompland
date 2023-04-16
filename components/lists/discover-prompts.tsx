@@ -3,8 +3,11 @@ import 'firebase/firestore'
 import { iUser  } from "../../typings"
 import { useEffect, useState } from "react";
 import Link from 'next/link';
-import { ChatBubbleLeftIcon, CodeBracketIcon, CommandLineIcon, EllipsisVerticalIcon, EnvelopeIcon, MagnifyingGlassIcon, PhoneIcon, StarIcon } from '@heroicons/react/20/solid';
+import {  CodeBracketIcon, CommandLineIcon, MagnifyingGlassIcon,StarIcon } from '@heroicons/react/20/solid';
 import RequestPromptModal from '../modals/request-prompt';
+import { encodeWithKey, decodeWithKey } from '../../lib/cipher';
+
+
 
 interface iPrompt {
   id: string;
@@ -52,8 +55,10 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
 
   // CACHE AREA
   function savePromptsToLocalStorage(prompts: any) {
+    const jsonString = JSON.stringify(prompts);
+    const encodedString = encodeWithKey(jsonString, user.uid);
     const data = {
-      prompts: prompts,
+      prompts: encodedString,
       timestamp: new Date().getTime(),
     };
     localStorage.setItem('cachedPrompts', JSON.stringify(data));
@@ -63,6 +68,8 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
     const data = localStorage.getItem('cachedPrompts');
     if (data) {
       const parsedData = JSON.parse(data);
+      const jsonString = decodeWithKey(parsedData.prompts, user.uid);
+      parsedData.prompts = JSON.parse(jsonString);
       return parsedData;
     }
     return null;
@@ -211,7 +218,7 @@ export default function DiscoverPromptsList({ user }: { user: iUser }) {
         {filteredPrompts.map((prompt: any) => {
           return (
               <li key={prompt.id} className="cursor-pointer col-span-1 divide-y divide-gray-200 rounded-lg bg-white  shadow">
-              <Link href={`/prompt/${prompt.id}`} prefetch={true}>
+              <Link href={`/prompt/${prompt.id}`}>
                 <div className="flex w-full items-center justify-between space-x-6 p-6 hover:bg-gray-100">
                     <div className="flex-1 truncate">
                       <div className="flex items-center space-x-3">
