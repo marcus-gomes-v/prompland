@@ -63,12 +63,12 @@ export default function DetailsPromptList({ promptCode, sequential }: { promptCo
   return (
     <>
       <ShowPromptTextModal opened={openModal} setOpened={setOpenModal} code={prompt} />
-      <ul role="list" className="mt-3 grid gap-3 grid-cols-2 lg:grid-cols-6 md:grid-cols-3 ">
+      <ul role="list" className="mt-3 grid gap-3 grid-cols-1 lg:grid-cols-6 md:grid-cols-3">
         {promptCode.map((code: string, index: number) => (
-          <li key={index} className="w-auto inline-flex cursor-pointer">
+          <li key={index} className="w-full md:w-auto inline-flex cursor-pointer">
             <div
               className={classNames(
-                'col-span-1 flex rounded-md shadow-sm border',
+                'w-full col-span-1 flex rounded-md shadow-sm border',
                 selectedItems.includes(index) && sequential ? 'border-green-500' : 'border-gray-300 hover:border-gray-400'
               )}
             >
@@ -76,13 +76,13 @@ export default function DetailsPromptList({ promptCode, sequential }: { promptCo
                 <>
                   <div
                     className={classNames(
-                      'flex w-16 flex-shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white',
+                      'flex w-32 md:w-16 flex-shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white',
                       selectedItems.includes(index) ? 'bg-green-500' : 'bg-pink-600'
                     )}
                   >
                     {index + 1}
                   </div>
-                  <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                  <div className="w-full flex justify-around rounded-r-md border-b border-r border-t border-gray-200 bg-white">
                     <div
                       onClick={() => {
                           if ((selectedItems.length === 0 && index === 0) || selectedItems[selectedItems.length - 1] === index - 1) {
@@ -96,7 +96,7 @@ export default function DetailsPromptList({ promptCode, sequential }: { promptCo
                             showErrorAlert();
                           }
                       }}
-                      className="flex-1 truncate px-4 py-2 text-sm"
+                      className="px-4 py-2 text-sm"
                     >
                       <DocumentDuplicateIcon className="h-5 w-5" />
                     </div>
@@ -104,22 +104,22 @@ export default function DetailsPromptList({ promptCode, sequential }: { promptCo
                       onClick={() => {
                         showPromptText(index);
                       }}
-                      className="flex-1 truncate px-4 py-2 text-sm"
+                      className="px-4 py-2 text-sm"
                     >
                       <EyeIcon className="h-5 w-5" />
                     </div>
                   </div>
                 </>:
-                <div>
+                <div className="w-full">
                   <div
                     className={classNames(
                       'w-full flex px-2 py-1',
                       selectedItems.includes(index) ? 'bg-vibrant-blue-400' : 'bg-turquoise-600'
                     )}
                   >
-                    <p className="mt-1 truncate text-sm text-white w-32 md:w-48 lg:w-40">{code}</p>
+                    <p className="mt-1 truncate text-sm text-white w-full md:w-48 lg:w-40">{code}</p>
                   </div>
-                  <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                  <div className="flex flex-1 items-center justify-around md:justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
                     <div
                       onClick={() => {
                           handleCopy(index);
@@ -134,7 +134,7 @@ export default function DetailsPromptList({ promptCode, sequential }: { promptCo
                       onClick={() => {
                         showPromptText(index);
                       }}
-                      className="border-l-2 flex gap-2 px-4 py-2 text-sm hover:bg-gray-100 hover:text-vibrant-blue-400"
+                      className="md:border-l-2 flex gap-2 px-4 py-2 text-sm hover:bg-gray-100 hover:text-vibrant-blue-400"
                     >
                       <EyeIcon className="h-5 w-5" />
                       View

@@ -1,8 +1,11 @@
 import Image from "next/image";
 import {
   MagnifyingGlassIcon,
-  PencilIcon,
+  PencilIcon
 } from '@heroicons/react/24/outline'
+import {
+  UserPlusIcon
+} from '@heroicons/react/20/solid'
 import { iUser } from '../../typings';
 import Invitation from "../invitation/invitation";
 import InvitationList from "../lists/invitations-list";
@@ -89,7 +92,7 @@ export default function Dashboard({ user }: { user: iUser }) {
         {/* Main 3 column grid */}
         <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-2 lg:gap-8">
           {/* Left column */}
-          <div className="grid grid-cols-1 gap-4 lg:col-span-2">
+          <div className="grid grid-cols-1 gap-4 lg:col-span-2 ">
             {/* Welcome panel */}
             {user.invited ?
               (
@@ -100,7 +103,7 @@ export default function Dashboard({ user }: { user: iUser }) {
                         Dashboard Overview
                       </h2>
                       <div className="bg-white p-6">
-                        <div className="sm:flex sm:items-center sm:justify-between">
+                        <div className="sm:flex sm:items-center sm:justify-between space-y-6">
                           <div className="sm:flex sm:space-x-5">
                             <div className="w-full text-center md:w-30">
                               <Image height={96} width={96} className="mx-auto h-20 w-20 rounded-full" src={user.imageUrl} alt="" />
@@ -115,7 +118,10 @@ export default function Dashboard({ user }: { user: iUser }) {
                             {
                               invitations ?
                                <>
-                                  <h2>Your Invitations</h2>
+                                  <h2 className="flex gap-1 text-center items-center justify-center font-bold">
+                                    <UserPlusIcon className="h-4 w-4" />
+                                    Invitations
+                                  </h2>
                                   <InvitationList invitations={invitations} />
                                </> :
                                <>

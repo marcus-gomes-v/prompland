@@ -21,7 +21,7 @@ export default function InvitationList({invitations}: any) {
           <img className="h-10 w-10 rounded-full" src={person?.image || '/images/avatar/placeholder.svg'} alt="" />
           <div className="ml-3">
             <p className="text-sm font-medium text-gray-900">{person?.name || person}</p>
-            <p className="text-sm text-gray-500">{person?.name ? 'Invited' : 'Invitation Code'}</p>
+            <p className="text-sm text-gray-500">{person?.name ? 'Registered' : 'Invitation Code'}</p>
           </div>
         </li>
       ))}

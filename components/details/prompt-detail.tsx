@@ -51,8 +51,8 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
         <>
           <div className="mb-5 grid lg:grid-cols-2 lg:gap-9">
             <div className="bg-white rounded-lg shadow-lg p-5">
-              <p className="text-xl font-semibold text-turquoise-600 mb-3">{promptDetail?.data.name}</p>
-              <p className="text-gray-700 mb-3 text-md text-justify">{promptDetail?.data.description}</p>
+              <p className="text-xl font-semibold text-turquoise-600 mb-3 w-80 md:w-full">{promptDetail?.data.name}</p>
+              <p className="text-gray-700 mb-3 text-md text-justify w-80 md:w-full">{promptDetail?.data.description}</p>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-5">
               <div className="flex items-center mb-3">
@@ -64,7 +64,7 @@ export default function PromptDetailData({ user, prompt }: { user: iUser, prompt
                 </div>
               </div>
               <span className='text-sm font-semibold text-turquoise-600'>Tags: </span>
-              <p className="text-gray-600 text-sm">{promptDetail?.data.hashtag}</p>
+              <p className="text-gray-600 text-sm truncate w-80 md:w-full">{promptDetail?.data.hashtag}</p>
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-lg p-5 mb-5">
