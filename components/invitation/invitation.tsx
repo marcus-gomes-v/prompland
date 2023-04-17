@@ -1,13 +1,67 @@
 import { useState } from "react"
 import AlertError from "../alerts/error"
+import firebase from "firebase"
+import { iUser } from "../../typings"
 
-export default function Invitation() {
 
+export default function Invitation({user}:{user: iUser}) {
   const [alert, setAlert] = useState(false)
+  const [success, setSuccess] = useState(false)
 
-  const processInvitation = (event: any) => {
+  const [code, setCode] = useState()
+
+  const setData = (d: any) => {
+    setCode(d)
+  }
+
+  const processInvitation = async (event: any) => {
     event.preventDefault()
-    setAlert(true)
+    
+    try{
+      // Get a reference to the prompts collection
+      const promptsRef = firebase.firestore().collection('invitations');
+
+      // Retrieve all documents from the prompts collection
+      const querySnapshot = await promptsRef.where("invitations", "array-contains", code).get();
+
+      if(querySnapshot.size == 1){
+        querySnapshot.forEach(async (doc) => {
+          const result = doc.data().invitations.map((invitation: any) => {
+            if (invitation === code) {
+              return {
+                uid: user.uid,
+                name: user.name || "No Name",
+                image: user.imageUrl
+              };
+            } else {
+              return invitation;
+            }
+          });
+          const docRef = promptsRef.doc(doc.id)
+          docRef.update({
+            invitations: result
+          })
+          .then(() => {
+            firebase
+              .firestore()
+              .collection('users')
+              .doc(user.uid)
+              .update({
+                invited: true
+              })
+              .then(() => {
+                location.reload()
+              })
+          });
+        })
+      } else {
+        setAlert(true)
+      }
+    } catch (error) {
+      console.log(error);
+      setAlert(true)
+    }
+
   }
 
   return (
@@ -36,6 +90,7 @@ export default function Invitation() {
                   name="access-code"
                   id="access-code"
                   required
+                  onChange={e => setData(e.target.value)}
                   className="
                     block
                     w-full

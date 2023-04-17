@@ -5,12 +5,17 @@ import {
 } from '@heroicons/react/24/outline'
 import { iUser } from '../../typings';
 import Invitation from "../invitation/invitation";
+import InvitationList from "../lists/invitations-list";
+import firebase from "firebase";
+import { generateRandomString } from "../../lib/utils";
+import { useEffect, useState } from "react";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Dashboard({ user }: { user: iUser }) {
+  const [invitations, setInvitations] = useState<Object | null>(null)
 
   const actions = user.type === 'user' ? [
     {
@@ -30,6 +35,52 @@ export default function Dashboard({ user }: { user: iUser }) {
       iconBackground: 'bg-vibrant-blue-50',
     },
   ] : []
+
+  const generateInvitation = async () => {
+    const userExists = await new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection('invitations')
+        .doc(user.uid)
+        .onSnapshot(function (doc: any) {
+          resolve(doc.data())
+        })
+    })
+    if (!userExists) {
+      await firebase
+        .firestore()
+        .collection('invitations')
+        .doc(user.uid)
+        .set({
+          user: {
+            name: user.name,
+            image: user.imageUrl
+          },
+          invitations: [
+            generateRandomString(16),
+            generateRandomString(16)
+          ]
+        })
+      console.log('Code generated with success');
+    } else {
+      console.log('You already generate your codes.');
+    }
+  }
+
+  useEffect(() => {
+    const unsubscribe = firebase
+      .firestore()
+      .collection('invitations')
+      .doc(user.uid)
+      .onSnapshot(function (doc: any) {
+        setInvitations(doc.data())
+      })
+
+    // Clean up the listener on unmount
+    return () => {
+      unsubscribe();
+    };
+  }, []);
  
   return (
     <main className="-mt-24 pb-8">
@@ -59,6 +110,22 @@ export default function Dashboard({ user }: { user: iUser }) {
                               <p className="text-xl font-bold text-gray-900 sm:text-2xl">{user.name}</p>
                               <p className="text-sm font-medium text-gray-600">{user.email}</p>
                             </div>
+                          </div>
+                          <div>
+                            {
+                              invitations ?
+                               <>
+                                  <h2>Your Invitations</h2>
+                                  <InvitationList invitations={invitations} />
+                               </> :
+                               <>
+                                  <button 
+                                    onClick={generateInvitation}
+                                    className="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                    Generate Invitation Codes
+                                  </button>
+                               </>
+                            }
                           </div>
                         </div>
                       </div>
@@ -123,7 +190,7 @@ export default function Dashboard({ user }: { user: iUser }) {
                 </>
               ) : 
               <>
-                <Invitation />
+                <Invitation user={user} />
               </>
             }
             
