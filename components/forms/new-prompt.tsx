@@ -133,6 +133,11 @@ export default function NewPromptForm({ user, prompt }: NewPromptFormProps) {
             votesCount: 0
           })
       }
+      
+      // Remove items from local storage
+      localStorage.removeItem('created-prompts');
+      localStorage.removeItem('cachedPrompts');
+
       Swal.fire('Success', 'Prompt saved with success', 'success').then(() => {
         router.push('/create-prompts');
       });
